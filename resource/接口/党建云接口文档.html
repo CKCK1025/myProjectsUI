@@ -1,0 +1,3340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>党建云接口文档</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1><strong>党员活动室</strong></h1>
+<p>1.获取用户层级 <code>GET_USER_LEVEL</code></p>
+<p>2.发送任务 <code>SEND_TASK_TX</code>     </p>
+<p>3.任务详情（此接口还未处理任务状态按钮  需联调时确定如何设置) <code>TASK_DETAIL_TX</code>   </p>
+<p>4.任务列表 <code>TASK_LIST_TX</code>     </p>
+<p>5.获取重要工作部署下发的党组织 <code>GET_PARTY_TX</code>     </p>
+<p>6.获取未关联过的上级部署 <code>GET_UNTIED_TASK_TX</code>    </p>
+<p>7.删除任务 <code>DELETE_TASK_TX</code>    </p>
+<p>8.终止任务 <code>STOP_TASK_TX</code>    </p>
+<p>9.恢复任务 <code>RESUME_TASK_TX</code>    </p>
+<p>10.任务回执（三会一课完成任务）<code>TASK_RECEIPT_TX</code>    </p>
+<p>11.接收人列表（无用接口）<code>RECEIVER_LIST_TX</code>   </p>
+<p>12.回执列表 <code>RECEIPT_LIST_TX</code>   </p>
+<p>13.回执附件 <code>RECEIPT_ATTACH_TX</code>   </p>
+<p>14.退会回执 <code>RETURN_RECEIPT_TX</code>   </p>
+<p>15.回执评分 <code>GRADE_RECEIPT_TX</code>   </p>
+<p>16.任务类型列表 <code>TASK_TYPE_LIST_TX</code>   </p>
+<p>17.修改任务 <code>MODIFY_TASK_TX</code>     </p>
+<p>18.任务完成情况 <code>TASK_COMPLETION_TX</code>     </p>
+<p>19.成员名单 <code>TASK_MEM_TX</code>     </p>
+<p>20.任务一键提醒 <code>TASK_REMIND_TX</code>     </p>
+<p>21.任务类型统计 <code>TASK_STATISTICS_TX</code>   </p>
+<h1><strong>我的（党员档案）</strong></h1>
+<p><strong>党费缴纳</strong></p>
+<p>1.查询党员应缴党费列表 <code>GET_PARTY_FEE_INFO</code></p>
+<p>2.查询党费缴纳详情 <code>GET_PARTY_FEE_DETAIL</code></p>
+<p>3.党费代缴列表 <code>GET_OTHER_PAY_LIST</code></p>
+<p>4.查询第三方支付列表 <code>GET_THIRD_PAY_LIST</code></p>
+<p>5.订单支付 <code>ORDER_PAY</code></p>
+<p><strong>党组织通讯录</strong></p>
+<p>1.查询组织架构信息 <code>QRY_PARTY_INFO</code></p>
+<p>2.根据组织id查询党员信息 <code>QRY_PARTY_MEM_INFO</code></p>
+<p>3.查询党员组织隶属信息 <code>QRY_MEM_PARTY_INFO</code></p>
+<p>4.根据用户查询组织架构信息 <code>QRY_PARTY_BY_USER</code> （APP未使用）</p>
+<p>5.根据职位过滤党员信息 <code>QRY_MEM_BY_POST</code></p>
+<p>6.根据党员姓名或者职位名称查询党员信息 <code>QRY_MEM_BY_NAME</code></p>
+<p>7.根据组织查询leader信息 <code>QRY_PARTY_LEADER</code></p>
+<p>8.点击头像查看用户信息 <code>APP093</code></p>
+<p><strong>入党申请</strong> </p>
+<p>1.提交入党申请 <code>ADD_PARTY_APPLY</code></p>
+<p>2.查询入党申请记录 <code>QRY_PARTY_APPLY_INFO</code></p>
+<p>3.查询入党申请记录详情 <code>QRY_PARTY_APPLY_INFO_DETAIL</code></p>
+<p>4.查询入党申请材料类型 <code>QRY_APPLY_ATTACH_TYPE</code></p>
+<p><strong>我的学习/我的考试</strong></p>
+<p>1.选修和必修的已完成（指掌上党校是否学习，且若关联考试活动已考）、待考活动、待缴党费， 提醒数量 <code>PARTY_BUILDING_REMIND_AMOUNT</code></p>
+<p>2.选修和必修的完成（指掌上党校是否学习，且若关联考试活动已考）：已学、未学，考试活动：已考、待考  列表 <code>PARTY_BUILDING_REMIND_LIST</code></p>
+<p>3.从资讯详情退出接口（记录学习时长）<code>NEWS_DETAIL_QUIT</code></p>
+<h1>党建资讯活动</h1>
+<p>1.获取党建园地栏目 <code>APP155</code></p>
+<p><strong>资讯活动共用</strong></p>
+<p>1.根据栏目获取资讯活动列表 <code>APP150</code></p>
+<p>2.查询资讯、活动、杂志、杂志的文章 <code>APP011</code></p>
+<p>3.评论 <code>APP039</code></p>
+<p>4.查找评论 <code>APP040</code></p>
+<p>5.删除评论 <code>APP054</code></p>
+<p>6.评论点赞 <code>COMMENT_LIKE</code></p>
+<p>7.获取举报类型 <code>REPORT_TYPE</code></p>
+<p>8.举报 <code>REPORT_ADD</code></p>
+<p>9.分享 <code>APP065</code></p>
+<p>10.添加收藏 <code>FAVORITES_ADD</code></p>
+<p>11.取消收藏 <code>FAVORITES_DELETE</code></p>
+<p><strong>资讯</strong></p>
+<p>1.资讯详情 <code>APP009</code></p>
+<p>2.资讯点赞 <code>APP010</code></p>
+<p><strong>活动</strong></p>
+<p>1.活动详情 <code>APP016</code>，<code>APP216</code>（主要使用APP216，但APP016接口APP有些场景还在用）</p>
+<p>2.活动点赞 <code>APP017</code></p>
+<p>3.参加活动 <code>APP018</code></p>
+<p>4.退出活动 <code>APP019</code></p>
+<p>5.查找活动参与的人的列表 <code>APP042</code></p>
+<p>6.查看户外活动参与详情 <code>APP043</code></p>
+<p>7.参加户外活动修改 <code>APP044</code></p>
+<p>8.最近一次考试结果 <code>APP045</code></p>
+<p>9.考试统计结果 <code>APP046</code></p>
+<p>10.问卷统计结果 <code>APP047</code></p>
+<p>11.考试统计结果(参与率) <code>APP055</code></p>
+<p>12.查询用户考试排名 <code>APP058</code></p>
+<p>13.查询考试靠前排名成绩 <code>APP059</code></p>
+<p>14.查看投票结果 <code>APP030</code></p>
+<p><strong>商品预定</strong></p>
+<p>1.获取商品列表信息 <code>GET_GOODS_LIST</code> </p>
+<p>2.获取商品详细信息 <code>GET_GOODS_DETAIL</code></p>
+<p>3.创建订单 <code>CREATE_ORDER</code></p>
+<p>4.获取订单列表 <code>GET_ORDER_LIST</code></p>
+<p>5.获取订单详情 <code>GET_ORDER_DETAIL</code></p>
+<p>6.获取订单状态 <code>GET_ORDER_STATE</code></p>
+<p>7.取消订单 <code>CANCLE_ORDER</code></p>
+<p>8.订单完成 <code>FINISH_ORDER</code></p>
+<p>9.商品评价 <code>GOODS_COMMENT</code></p>
+<p>10.获取下单权限 <code>GET_ORDER_RIGHTS</code></p>
+<p>11.获取订单商品信息 <code>GET_ORDER_GOODS</code></p>
+<p>12.商家确认订单已完成 <code>CONFIRM_ORDER</code></p>
+<p>13.获取商家确认订单页面信息 <code>CONFIRM_ORDER_INFO</code></p>
+<p>14.获取上次下单地址 <code>GET_LAST_ADRESS</code></p>
+<p>15.获取下单截止时间 <code>GET_GOODS_TIME</code></p>
+<hr />
+<hr />
+<h1><strong>接口详情</strong></h1>
+<p>接口地址：{APP接口IP：端口号} + url</p>
+<p>1.获取用户层级 <code>GET_USER_LEVEL</code>   </p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;msgId&quot;:&quot;GET_USER_LEVEL&quot;,&quot;userId&quot;:&quot;238&quot;}
+
+关键入参说明：
+userId：用户ID
+
+输出：
+{
+  &quot;resultMap&quot;: {
+    &quot;postInfo&quot;: [
+      {
+        &quot;level&quot;: 1,
+        &quot;postName&quot;: &quot;政工经理&quot;,
+        &quot;fullName&quot;: &quot;烽火科技集团党委&gt;烽火通信公司党委&quot;,
+        &quot;partyId&quot;: 1
+      },
+      {
+        &quot;level&quot;: 1,
+        &quot;postName&quot;: &quot;组织委员&quot;,
+        &quot;fullName&quot;: &quot;烽火科技集团党委&gt;烽火通信公司党委&gt;机关第一党支部&quot;,
+        &quot;partyId&quot;: 15
+      },
+      {
+        &quot;level&quot;: 2,
+        &quot;postName&quot;: &quot;党务接口人&quot;,
+        &quot;fullName&quot;: &quot;烽火科技集团党委&gt;烽火通信公司党委&gt;机关第一党支部&gt;第一党小组&quot;,
+        &quot;partyId&quot;: 17
+      }
+    ]
+  },
+  &quot;code&quot;: &quot;0&quot;,
+  &quot;message&quot;: &quot;成功&quot;
+}
+
+关键出参说明：
+level：职位所在等级 1.党支部以上接口人 2.党支部接口人 3.普通党员
+partyid: 用户有职务为职务所在党组织ID  用户无职务为本人所在党组织
+</code></pre>
+
+<p>2.发送任务 <code>SEND_TASK_TX</code>     </p>
+<pre><code>url：/app/service.do?text={&quot;content&quot;:&quot;dsadasdsdad&quot;,&quot;endDate&quot;:&quot;2018-5-15 17:30:00&quot;,&quot;id&quot;:&quot;55&quot;,&quot;isNeedReceipt&quot;:true,&quot;msgId&quot;:&quot;SEND_TASK_TX&quot;,&quot;name&quot;:&quot;test1445&quot;,&quot;partyIds&quot;:[&quot;56&quot;,&quot;58&quot;,&quot;60&quot;,&quot;62&quot;,&quot;64&quot;,&quot;66&quot;,&quot;294&quot;],&quot;upTaskId&quot;:[&quot;1&quot;,&quot;2&quot;],&quot;receiverList&quot;:[{&quot;partyid&quot;:&quot;57&quot;,&quot;userid&quot;:&quot;801&quot;},{&quot;partyid&quot;:&quot;57&quot;,&quot;userid&quot;:&quot;20&quot;},{&quot;partyid&quot;:&quot;57&quot;,&quot;userid&quot;:&quot;2250&quot;},{&quot;partyid&quot;:&quot;61&quot;,&quot;userid&quot;:&quot;2271&quot;},{&quot;partyid&quot;:&quot;57&quot;,&quot;userid&quot;:&quot;10372&quot;},{&quot;partyid&quot;:&quot;57&quot;,&quot;userid&quot;:&quot;414&quot;},{&quot;partyid&quot;:&quot;65&quot;,&quot;userid&quot;:&quot;841&quot;}],&quot;topicId&quot;:&quot;1&quot;,&quot;typeId&quot;:&quot;3&quot;,&quot;userId&quot;:&quot;801&quot;,&quot;isOffline&quot;:false,&quot;taskAttachList&quot;:[]}
+
+关键入参说明： 
+id：首页接口拿到的partyId
+upTaskId 关联上级任务部署ID Long数组
+topicId: 任务主题ID 99.重要工作部署 4.党课 1.支部党员大会 2.党支部委员会 3.党小组会
+isOffline：是否线下会议 false否
+typeId 任务类型 这个查以前的接口
+name 任务名称
+content 任务内容
+taskAttachList 任务附件
+接口人 如果是工作部署 查接口GET_PARTY_TX 存partyIds字段 如果是三会一课就跟以前一样
+isNeedReceipt 是否提交结果附件
+endDate 截止时间
+receiverList：接收人列表 只有三会一课任务有此参数，任务部署只传接收组织partyIds
+
+输出：
+{
+  &quot;code&quot;: &quot;0&quot;,
+  &quot;message&quot;: &quot;成功。&quot;
+}
+</code></pre>
+
+<p>3.任务详情（此接口还未处理任务状态按钮  需联调时确定如何设置) <code>TASK_DETAIL_TX</code> </p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;taskId&quot;:5,&quot;msgId&quot;:&quot;TASK_DETAIL_TX&quot;,&quot;userId&quot;:&quot;2664&quot;,&quot;topicId&quot;:1,isSend:true,&quot;partyId&quot;:2}
+
+关键入参说明：
+taskId：任务id
+topicId: 任务主题ID 99.重要工作部署 4.党课 1.支部党员大会 2.党支部委员会 3.党小组会
+isSend：列表进入（我发出的 true 我收到的false） 链接进入（一律为true）
+partyId：用户权限id（首页带入）
+
+输出参数：
+isIssue：是否下发
+downTaskId：向下关联任务ID
+downTaskTopicId：向下关联任务主题
+downTaskUserId：向下关联任务发起者ID
+allMemCount：所有党员数量
+memFinishCount：参与党员数量
+memPercentage：党员参与率  （未加百分号）
+allPartyCount：所有组织数量            组织相关参数不一定有
+partyFinishCount：完成组织数量
+partyPercentage：组织完成率  （未加百分号）
+isOffline：是否线下会议
+upPartyLevel: 发起人等级
+upTasks：关联任务id与name
+
+输出：
+{
+  &quot;resultMap&quot;: {
+    &quot;task_tx&quot;: {
+      &quot;taskTopic&quot;: &quot;重要任务部署&quot;,
+      &quot;attachCount&quot;: 4,
+      &quot;endDate&quot;: &quot;2018-08-15 17:30:00&quot;,
+      &quot;memberCount&quot;: 4,
+      &quot;downTaskUserId&quot;: 100000003,
+      &quot;isIssue&quot;: true,
+      &quot;downTaskTopicId&quot;: 4,
+      &quot;type&quot;: 3,
+      &quot;userName&quot;: &quot;马守灏&quot;,
+      &quot;userId&quot;: 2664,
+      &quot;content&quot;: &quot;测试关联附件0703&quot;,
+      &quot;finishedCount&quot;: 1,
+      &quot;replyCount&quot;: 0,
+      &quot;taskType&quot;: &quot;选举&quot;,
+      &quot;upTasks&quot;: [
+        {
+          &quot;upTaskId&quot;: 19,
+          &quot;upTaskName&quot;: &quot;0920&quot;
+        },
+        {
+          &quot;upTaskId&quot;: 20,
+          &quot;upTaskName&quot;: &quot;Task0922&quot;
+        }
+      ],
+      &quot;upPartyName&quot;: &quot;烽火科技集团党委&gt;烽火通信公司党委&quot;,
+      &quot;upPartyId&quot;: 1,
+      &quot;upPartyLevel&quot;: 1,
+      &quot;taskName&quot;: &quot;测试关联附件0703&quot;,
+      &quot;downTaskId&quot;: 39,
+      &quot;isNeedReceipt&quot;: true,
+      &quot;txPic&quot;: &quot;user/2664_201803260839108021.jpg&quot;,
+      &quot;upTaskId&quot;: &quot;&quot;,
+      &quot;taskId&quot;: 35,
+      &quot;createDate&quot;: &quot;2018-07-03 17:20:44&quot;,
+      &quot;status&quot;: 2,
+      &quot;isOffline&quot;: 0,
+      &quot;allMemCount&quot;: 1000,
+      &quot;memFinishCount&quot;: 750,
+      &quot;memPercentage&quot;: 75,
+      &quot;allPartyCount&quot;: 100,
+      &quot;partyFinishCount&quot;: 75,
+      &quot;partyPercentage&quot;: 75
+    },
+    &quot;attachList&quot;: [
+      {
+        &quot;type&quot;: 1,
+        &quot;attachId&quot;: 609,
+        &quot;newsActivity&quot;: {
+          &quot;id&quot;: 8149,
+          &quot;objectType&quot;: 1,
+          &quot;title&quot;: &quot;党建园地-不上首页-党校&quot;,
+          &quot;titleImage&quot;: [
+            &quot;news/8149/20180605091417311708.jpg&quot;
+          ],
+          &quot;type&quot;: 1,
+          &quot;isAtlas&quot;: false,
+          &quot;source&quot;: &quot;烽火立云&quot;,
+          &quot;commentCount&quot;: 0,
+          &quot;layout&quot;: 1,
+          &quot;digest&quot;: &quot;&quot;,
+          &quot;isView&quot;: true,
+          &quot;createDate&quot;: &quot;2018-06-05 09:14:16&quot;,
+          &quot;orgId&quot;: &quot;02A68600&quot;,
+          &quot;isShare&quot;: true,
+          &quot;isComment&quot;: true,
+          &quot;isLive&quot;: false,
+          &quot;updateTime&quot;: &quot;2018-06-05 09:14:16&quot;,
+          &quot;liveMap&quot;: {}
+        }
+      },
+      {
+        &quot;type&quot;: 2,
+        &quot;attachId&quot;: 610,
+        &quot;newsActivity&quot;: {
+          &quot;id&quot;: 1125,
+          &quot;objectType&quot;: 2,
+          &quot;title&quot;: &quot;通信-订餐-上首页&quot;,
+          &quot;titleImage&quot;: [
+            &quot;activity/1125/20180620020620654753.jpg&quot;
+          ],
+          &quot;type&quot;: 7,
+          &quot;participant&quot;: 0,
+          &quot;endTime&quot;: &quot;2018-06-30 14:05:59&quot;,
+          &quot;beginTime&quot;: &quot;2018-06-20 14:05:58&quot;,
+          &quot;isView&quot;: false,
+          &quot;createDate&quot;: &quot;2018-06-20 14:06:19&quot;,
+          &quot;status&quot;: 1,
+          &quot;liveMap&quot;: {}
+        }
+      },
+      {
+        &quot;type&quot;: 3,
+        &quot;content&quot;: &quot;{\&quot;h\&quot;:405,\&quot;height\&quot;:0,\&quot;w\&quot;:540,\&quot;width\&quot;:0}&quot;,
+        &quot;attachId&quot;: 611,
+        &quot;newsActivity&quot;: {
+          &quot;titleImage&quot;: [],
+          &quot;fileUrl&quot;: &quot;http://yq-fiberhome-test.img-cn-hangzhou.aliyuncs.com/task/images/20180621145657849155.jpeg&quot;,
+          &quot;liveMap&quot;: {}
+        }
+      },
+      {
+        &quot;type&quot;: 3,
+        &quot;content&quot;: &quot;{\&quot;h\&quot;:112,\&quot;height\&quot;:405,\&quot;w\&quot;:150,\&quot;width\&quot;:540}&quot;,
+        &quot;attachId&quot;: 612,
+        &quot;newsActivity&quot;: {
+          &quot;titleImage&quot;: [],
+          &quot;fileUrl&quot;: &quot;http://yq-common-prod.img-cn-hangzhou.aliyuncs.com/chat/511777128/images/20180621144022859422.jpeg&quot;,
+          &quot;liveMap&quot;: {}
+        }
+      }
+    ]
+  },
+  &quot;code&quot;: &quot;0&quot;,
+  &quot;message&quot;: &quot;成功&quot;
+}
+</code></pre>
+
+<p>4.任务列表 <code>TASK_LIST_TX</code></p>
+<pre><code>    url：/app/taskTX/service.do?text={&quot;upPartyId&quot;:2,&quot;msgId&quot;:&quot;TASK_LIST_TX&quot;,&quot;userId&quot;:&quot;100000003&quot;,&quot;topicId&quot;:1,&quot;level&quot;:2,&quot;keyword&quot;:&quot;&quot;,isSend:true,status:4,index:0,pageSize:10}
+
+    关键入参说明：
+    upPartyId：用户权限所在党组织ID，即GET_USER_LEVEL中得到的partyid
+    topicId: 任务主题ID 99.重要工作部署 4.党课 1.支部党员大会 2.党支部委员会 3.党小组会
+    level： 职位所在等级
+    keyword：搜索关键字
+    isSend：是否为发送者  true 发送 false 接收
+    status：任务状态 2进行中 3完成 4已过期
+
+    输出：
+    {
+  &quot;resultMap&quot;: {
+    &quot;taskList&quot;: [
+      {
+        &quot;endDate&quot;: &quot;2018-05-15 17:30:00&quot;,
+        &quot;isIssue&quot;: true,
+        &quot;userId&quot;: 2664,
+        &quot;isSender&quot;: &quot;1&quot;,
+        &quot;taskType&quot;: &quot;选举&quot;,
+        &quot;upPartyName&quot;: &quot;&quot;,
+        &quot;upPartyId&quot;: &quot;&quot;,
+        &quot;upPartyLevel&quot;: 1,
+        &quot;taskName&quot;: &quot;关联上级部署&quot;,
+        &quot;isOutOfDate&quot;: false,
+        &quot;upTaskId&quot;: &quot;&quot;,
+        &quot;taskId&quot;: 25,
+        &quot;createDate&quot;: &quot;2018-07-03 08:57:56&quot;,
+        &quot;status&quot;: 4,
+        &quot;isStop&quot;: false,
+        &quot;allMemCount&quot;: 1000,
+          &quot;memFinishCount&quot;: 750,
+          &quot;memPercentage&quot;: 75,
+          &quot;allPartyCount&quot;: 100,
+          &quot;partyFinishCount&quot;: 75,
+          &quot;partyPercentage&quot;: 75
+      }
+    ]
+  },
+  &quot;code&quot;: &quot;0&quot;,
+  &quot;message&quot;: &quot;成功&quot;
+}
+
+关键出参说明：
+isissue：任务是否下发 true已下发
+uppartyname：发起人组织名称
+upPartyLevel: 发起人等级
+issender：是否为发送者
+uptaskid：任务关联上级部署ID 若未关联 此字段结果为&quot;&quot;
+uptasknames：关联部署名称 若未关联 此字段不存在
+status：任务状态 2进行中 3完成 4已过期
+isStop：是否已终止 false未终止
+allMemCount：所有党员数量
+memFinishCount：参与党员数量
+memPercentage：党员参与率  （未加百分号）
+allPartyCount：所有组织数量            组织相关参数不一定有
+partyFinishCount：完成组织数量
+partyPercentage：组织完成率  （未加百分号）
+</code></pre>
+
+<p>5.获取重要工作部署下发的党组织 <code>GET_PARTY_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;id&quot;:&quot;1&quot;,&quot;msgId&quot;:&quot;GET_PARTY_TX&quot;}
+
+关键入参说明：
+id：用户权限所在党组织ID
+
+输出：
+{
+  &quot;resultMap&quot;: {
+    &quot;obj&quot;: [
+      {
+        &quot;name&quot;: &quot;国内销售部党总支&quot;,
+        &quot;partyId&quot;: 2
+      },
+      {
+        &quot;name&quot;: &quot;烽火集成公司党总支&quot;,
+        &quot;partyId&quot;: 184
+      },
+      {
+        &quot;name&quot;: &quot;烽火网络公司党总支&quot;,
+        &quot;partyId&quot;: 140
+      },
+      {
+        &quot;name&quot;: &quot;烽火国际公司党支部&quot;,
+        &quot;partyId&quot;: 100
+      },
+      {
+        &quot;name&quot;: &quot;线缆产出线党总支&quot;,
+        &quot;partyId&quot;: 83
+      },
+      {
+        &quot;name&quot;: &quot;系统设备制造部党总支&quot;,
+        &quot;partyId&quot;: 70
+      },
+      {
+        &quot;name&quot;: &quot;公共研发部党总支&quot;,
+        &quot;partyId&quot;: 55
+      },
+      {
+        &quot;name&quot;: &quot;烽火技服公司党总支&quot;,
+        &quot;partyId&quot;: 36
+      },
+      {
+        &quot;name&quot;: &quot;微电子部党支部&quot;,
+        &quot;partyId&quot;: 34
+      },
+      {
+        &quot;name&quot;: &quot;宽带业务产出线党总支&quot;,
+        &quot;partyId&quot;: 28
+      },
+      {
+        &quot;name&quot;: &quot;网络产出线党总支&quot;,
+        &quot;partyId&quot;: 25
+      },
+      {
+        &quot;name&quot;: &quot;机关第二党支部&quot;,
+        &quot;partyId&quot;: 23
+      },
+      {
+        &quot;name&quot;: &quot;机关第一党支部&quot;,
+        &quot;partyId&quot;: 15
+      },
+      {
+        &quot;name&quot;: &quot;光配线系统产出线党总支&quot;,
+        &quot;partyId&quot;: 327
+      }
+    ]
+  },
+  &quot;code&quot;: &quot;0&quot;,
+  &quot;message&quot;: &quot;成功&quot;
+}
+</code></pre>
+
+<p>6.获取未关联过的上级部署 <code>GET_UNTIED_TASK_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;id&quot;:&quot;2&quot;,&quot;msgId&quot;:&quot;GET_UNTIED_TASK_TX&quot;,&quot;isAll&quot;:false}   
+
+关键入参说明：
+id：用户权限所在党组织ID
+isAll：是否查询所有上级部署
+
+输出：
+{
+  &quot;resultMap&quot;: {
+    &quot;obj&quot;: [
+      {
+        &quot;name&quot;: &quot;test1445&quot;,
+        &quot;id&quot;: 2
+      },
+      {
+        &quot;name&quot;: &quot;关联上级部署&quot;,
+        &quot;id&quot;: 7
+      }
+    ]
+  },
+  &quot;code&quot;: &quot;0&quot;,
+  &quot;message&quot;: &quot;成功&quot;
+}
+
+关键出参说明：
+id：任务id
+name：任务名称
+</code></pre>
+
+<p>7.删除任务 <code>DELETE_TASK_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;taskId&quot;:&quot;2&quot;,&quot;msgId&quot;:&quot;DELETE_TASK_TX&quot;,&quot;topicId&quot;:99}    
+
+关键入参说明：
+taskId：删除的任务id
+userId：用户ID
+</code></pre>
+
+<p>8.终止任务 <code>STOP_TASK_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;taskId&quot;:&quot;2&quot;,&quot;msgId&quot;:&quot;STOP_TASK_TX&quot;,&quot;userId&quot;:2664} 
+
+关键入参说明：
+taskId：终止的任务id
+userId：用户ID
+</code></pre>
+
+<p>9.恢复任务 <code>RESUME_TASK_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;taskId&quot;:&quot;2&quot;,&quot;msgId&quot;:&quot;RESUME_TASK_TX&quot;,&quot;userId&quot;:2664}   
+
+关键入参说明：
+taskId：恢复的任务id
+topicId：任务类型
+</code></pre>
+
+<p>10.任务回执（三会一课完成任务）<code>TASK_RECEIPT_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;content&quot;:&quot;任务回执&quot;,&quot;msgId&quot;:&quot;TASK_RECEIPT_TX&quot;,&quot;taskAttachList&quot;:[{&quot;content&quot;:&quot;{\&quot;h\&quot;:548,\&quot;height\&quot;:0,\&quot;w\&quot;:360,\&quot;width\&quot;:0}&quot;,&quot;url&quot;:&quot;http://yq-fiberhome-test.img-cn-hangzhou.aliyuncs.com/task/images/20180703191923540114.jpeg&quot;,&quot;type&quot;:3}],&quot;taskId&quot;:&quot;1842&quot;,&quot;userId&quot;:&quot;2664&quot;}   
+
+关键入参说明：
+content：内容
+taskAttachList：附件
+taskId：任务ID
+userId：用户ID
+</code></pre>
+
+<p>11.接收人列表（无用接口）<code>RECEIVER_LIST_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text=
+
+关键入参说明：
+content：内容
+taskAttachList：附件
+taskId：任务ID
+userId：用户ID
+</code></pre>
+
+<p>12.回执列表 <code>RECEIPT_LIST_TX</code> </p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;userId&quot;:&quot;2664&quot;,&quot;msgId&quot;:&quot;RECEIPT_LIST_TX&quot;,&quot;taskId&quot;:&quot;1842&quot;,&quot;index&quot;:0}
+
+关键入参说明：
+index：索引
+taskId：任务ID
+userId：用户ID
+</code></pre>
+
+<p>13.回执附件 <code>RECEIPT_ATTACH_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;msgId&quot;:&quot;RECEIPT_ATTACH_TX&quot;,&quot;replyId&quot;:&quot;27963&quot;}
+
+关键入参说明： 
+replyId：回执ID
+</code></pre>
+
+<p>14.退会回执 <code>RETURN_RECEIPT_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;content&quot;:&quot;重做测试&quot;,&quot;msgId&quot;:&quot;RETURN_RECEIPT_TX&quot;,&quot;replyId&quot;:&quot;27963&quot;}
+
+关键入参说明：
+replyId：回执ID
+</code></pre>
+
+<p>15.回执评分 <code>GRADE_RECEIPT_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;content&quot;:&quot;杰出&quot;,&quot;msgId&quot;:&quot;GRADE_RECEIPT_TX&quot;,&quot;replyId&quot;:&quot;27964&quot;}
+
+关键入参说明：
+replyId：回执ID
+</code></pre>
+
+<p>16.任务类型列表 <code>TASK_TYPE_LIST_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;msgId&quot;:&quot;TASK_TYPE_LIST_TX&quot;,&quot;topicId&quot;:99}
+
+关键入参说明：
+topicId: 任务主题ID 99.重要工作部署 4.党课 1.支部党员大会 2.党支部委员会 3.党小组会
+
+输出：
+{
+  &quot;resultMap&quot;: {
+    &quot;typeList&quot;: [
+      {
+        &quot;name&quot;: &quot;考试&quot;,
+        &quot;id&quot;: &quot;1&quot;,
+        &quot;isNeedReceipt&quot;: false
+      },
+      {
+        &quot;name&quot;: &quot;投票&quot;,
+        &quot;id&quot;: &quot;2&quot;,
+        &quot;isNeedReceipt&quot;: false
+      },
+      {
+        &quot;name&quot;: &quot;选举&quot;,
+        &quot;id&quot;: &quot;3&quot;,
+        &quot;isNeedReceipt&quot;: false
+      }
+    ]
+  },
+  &quot;code&quot;: &quot;0&quot;,
+  &quot;message&quot;: &quot;成功&quot;
+}
+</code></pre>
+
+<p>17.修改任务 <code>MODIFY_TASK_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;content&quot;:&quot;dsadasdsdad&quot;,&quot;endDate&quot;:&quot;2018-5-15 17:30:00&quot;,&quot;id&quot;:&quot;55&quot;,&quot;isNeedReceipt&quot;:true,&quot;msgId&quot;:&quot;MODIFY_TASK_TX&quot;,&quot;partyIds&quot;:[&quot;56&quot;,&quot;58&quot;,&quot;60&quot;,&quot;62&quot;,&quot;64&quot;,&quot;66&quot;,&quot;294&quot;],&quot;upTaskId&quot;:[1,2],&quot;receiverList&quot;:[{&quot;partyid&quot;:&quot;57&quot;,&quot;userid&quot;:&quot;801&quot;},{&quot;partyid&quot;:&quot;57&quot;,&quot;userid&quot;:&quot;20&quot;},{&quot;partyid&quot;:&quot;57&quot;,&quot;userid&quot;:&quot;2250&quot;},{&quot;partyid&quot;:&quot;61&quot;,&quot;userid&quot;:&quot;2271&quot;},{&quot;partyid&quot;:&quot;57&quot;,&quot;userid&quot;:&quot;10372&quot;},{&quot;partyid&quot;:&quot;57&quot;,&quot;userid&quot;:&quot;414&quot;},{&quot;partyid&quot;:&quot;65&quot;,&quot;userid&quot;:&quot;841&quot;}],&quot;topicId&quot;:&quot;1&quot;,&quot;userId&quot;:&quot;801&quot;,&quot;taskAttachList&quot;:[],taskId:3}
+
+关键入参说明： 
+id：首页接口拿到的partyId
+taskId：任务id
+upTaskId 关联上级任务部署ID Long数组
+topicId: 任务主题ID 99.重要工作部署 4.党课 1.支部党员大会 2.党支部委员会 3.党小组会
+content 任务内容
+taskAttachList 任务附件
+接口人 如果是工作部署 查接口GET_PARTY_TX 存partyIds字段 如果是三会一课就跟以前一样
+isNeedReceipt 是否提交结果附件
+endDate 截止时间
+receiverList：接收人列表 只有三会一课任务有此参数，任务部署只传接收组织partyIds
+
+
+输出：
+{
+  &quot;code&quot;: &quot;0&quot;,
+  &quot;message&quot;: &quot;成功。&quot;
+}
+</code></pre>
+
+<p>18.任务完成情况 <code>TASK_COMPLETION_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;partyId&quot;:1,&quot;status&quot;:1,&quot;msgId&quot;:&quot;TASK_COMPLETION_TX&quot;,&quot;taskId&quot;:3,&quot;flag&quot;: true}
+
+关键入参说明： 
+partyId：首页接口拿到的partyId
+taskId：若是列表传进来的  直接传任务id 任务完成情况传过来  则传出参的taskId 
+status：此任务否下发任务 0无下发任务  1下发任务为重要工作部署  2下发任务为三会一课（此状态为模拟，主要是将三会一课分发到党支部中） 第一次调接口默认传1 后续用输出参数中的status值
+flag：true 为列表跳入  false完成情况页面查询子任务
+
+出参说明：
+hasChild：有子节点
+name：部门名
+partyId：部门id  查询子节点时回传
+allMemCount：所有党员数量
+memFinishCount：参与党员数量
+isComplete：1 已完成
+status：此任务否下发任务 未下发任务不代表没有子节点 子节点判断基于当前节点为党支部 查询子节点时回传
+taskId：任务id 本接口不需要  成员名单接口需要带入
+
+输出：
+{
+  &quot;resultMap&quot;: {
+    &quot;dataList&quot;: [
+      {
+        &quot;linkId&quot;: 143,
+        &quot;hasChild&quot;: true,
+        &quot;name&quot;: &quot;国内销售部党总支&quot;,
+        &quot;fullName&quot;: &quot;烽火科技集团党委&gt;烽火通信公司党委&gt;国内销售部党总支&quot;,
+        &quot;id&quot;: 141,
+        &quot;partyId&quot;: 2,
+        &quot;taskId&quot;: 91,
+        &quot;allMemCount&quot;: 18,
+        &quot;isComplete&quot;: 1,
+        &quot;memFinishCount&quot;: 1,
+        &quot;status&quot;: 1
+      },
+      {
+        &quot;linkId&quot;: &quot;&quot;,
+        &quot;hasChild&quot;: true,
+        &quot;name&quot;: &quot;烽火集成公司党总支&quot;,
+        &quot;fullName&quot;: &quot;烽火科技集团党委&gt;烽火通信公司党委&gt;烽火集成公司党总支&quot;,
+        &quot;id&quot;: 142,
+        &quot;partyId&quot;: 184,
+        &quot;taskId&quot;: 91,
+        &quot;allMemCount&quot;: 134,
+        &quot;isComplete&quot;: 1,
+        &quot;memFinishCount&quot;: 0,
+        &quot;status&quot;: 0
+      }
+    ]
+  },
+  &quot;code&quot;: &quot;0&quot;,
+  &quot;message&quot;: &quot;成功&quot;
+}
+</code></pre>
+
+<p>19.成员名单 <code>TASK_MEM_TX</code></p>
+<p>url：/app/taskTX/service.do?text={&quot;id&quot;:1,&quot;flag&quot;:true,&quot;msgId&quot;:&quot;TASK<em>MEM</em>TX&quot;,taskId:3,&quot;isSend&quot;:false,&quot;topicId&quot;:4}</p>
+<pre><code>关键入参说明： 
+id：上一个接口出参的partyId
+flag：上一个接口出参的isComplete值， true代表有三会一课任务关联到 false没有  列表过来默认 true
+taskId：若是列表传进来的  直接传任务id 任务完成情况传过来  则传出参的taskId
+isSend:发出的1 收到的0
+topicId:任务主题id
+
+输出：
+ {
+    &quot;resultMap&quot;:{
+        &quot;completedName&quot;:[{&quot;name&quot;:&quot;鲁晓辉&quot;},{&quot;name&quot;:&quot;李利群&quot;}],
+        &quot;unCompletedName&quot;:[{&quot;name&quot;:&quot;陈凯心&quot;},{&quot;name&quot;:&quot;李雅南&quot;}]
+        },
+        &quot;code&quot;:&quot;0&quot;,
+        &quot;message&quot;:&quot;成功&quot;
+ }
+</code></pre>
+
+<p>20.任务一键提醒 <code>TASK_REMIND_TX</code></p>
+<pre><code>url：/app/taskTX/service.do?text={&quot;flag&quot;:true,&quot;msgId&quot;:&quot;TASK_REMIND_TX&quot;,taskId:3}
+
+关键入参说明：     
+flag：true 为任务完成列表一键提醒  false为成员名单一键提醒
+taskId：任务ID 
+</code></pre>
+
+<p>21.任务类型统计 <code>TASK_STATISTICS_TX</code></p>
+<pre><code>普通党员
+url：/app/taskTX/service.do?text={&quot;userId&quot;:&quot;9581&quot;,&quot;msgId&quot;:&quot;TASK_STATISTICS_TX&quot;,&quot;partyId&quot;:189,&quot;level&quot;:3,&quot;keyword&quot;:&quot;2018&quot;}
+党支部接口人
+url：/app/taskTX/service.do?text={&quot;userId&quot;:&quot;9581&quot;,&quot;msgId&quot;:&quot;TASK_STATISTICS_TX&quot;,&quot;partyId&quot;:5,&quot;level&quot;:2,&quot;keyword&quot;:&quot;2018&quot;}
+党支部以上接口人
+url：/app/taskTX/service.do?text={&quot;userId&quot;:&quot;9581&quot;,&quot;msgId&quot;:&quot;TASK_STATISTICS_TX&quot;,&quot;partyId&quot;:1,&quot;level&quot;:1,&quot;keyword&quot;:&quot;2018&quot;}
+
+关键入参说明：
+userId：用户ID
+partyId：部门id
+level：职位所在等级
+keyword：时间关键字  2018代表查2018全年  2018—3代表查2018年第三季度
+
+出参说明：
+status：任务状态 2进行中 3已完成 4未完成
+</code></pre>
+
+<p>1.查询党员应缴党费列表 <code>GET_PARTY_FEE_INFO</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;msgId&quot;:&quot;GET_PARTY_FEE_INFO&quot;,&quot;userId&quot;:&quot;21310&quot;}
+
+主要入参说明：
+userId：用户id
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;activityId&quot;: &quot;559&quot;,
+    &quot;address&quot;: &quot;...................................&quot;,
+    &quot;postInfo&quot;: [
+        {
+            &quot;postname&quot;: &quot;组织委员&quot;,
+            &quot;fullname&quot;: &quot;烽火通信科技股份有限公司党委&gt;烽火集成公司党总支&gt;第二党支部&quot;,
+            &quot;postid&quot;: &quot;100443&quot;,
+            &quot;partyid&quot;: &quot;186&quot;
+        }
+    ],
+    &quot;receiveSide&quot;: &quot;烽火通信科技股份有限公司党委&gt;烽火集成公司党总支&gt;第二党支部&quot;,
+    &quot;mealTime&quot;: &quot;每周五（11：30-12：30；17：00-18：00）&quot;,
+    &quot;shouldPayList&quot;: [
+        {
+            &quot;amount&quot;: &quot;1&quot;,
+            &quot;shouldPayDate&quot;: &quot;2019-02&quot;,
+            &quot;goodsId&quot;: &quot;73&quot;,
+            &quot;price&quot;: &quot;0.01&quot;,
+            &quot;name&quot;: &quot;党费&quot;,
+            &quot;feeId&quot;: &quot;1553914020976349&quot;
+        }
+    ],
+    &quot;feeList&quot;: [
+        {
+            &quot;2019&quot;: [
+                {
+                    &quot;ispay&quot;: &quot;false&quot;,
+                    &quot;money&quot;: &quot;0.01&quot;,
+                    &quot;payway&quot;: &quot;&quot;,
+                    &quot;id&quot;: &quot;1553914020976349&quot;,
+                    &quot;paydate&quot;: &quot;&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2019-02-01 00:00:00&quot;
+                }
+            ]
+        },
+        {
+            &quot;2018&quot;: [
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;87.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;30895&quot;,
+                    &quot;paydate&quot;: &quot;2018-07-02 08:54:11&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2018-05-01 00:00:00&quot;
+                },
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;87.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;28291&quot;,
+                    &quot;paydate&quot;: &quot;2018-05-22 09:34:38&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2018-04-01 00:00:00&quot;
+                },
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;86.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;25867&quot;,
+                    &quot;paydate&quot;: &quot;2018-04-26 16:05:51&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2018-03-01 00:00:00&quot;
+                },
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;133.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;21735&quot;,
+                    &quot;paydate&quot;: &quot;2018-04-26 16:05:51&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2018-02-01 00:00:00&quot;
+                },
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;88.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;19090&quot;,
+                    &quot;paydate&quot;: &quot;2018-02-07 04:25:31&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2018-01-01 00:00:00&quot;
+                }
+            ]
+        },
+        {
+            &quot;2017&quot;: [
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;88.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;16651&quot;,
+                    &quot;paydate&quot;: &quot;2018-02-07 04:25:31&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2017-12-01 00:00:00&quot;
+                },
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;88.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;14441&quot;,
+                    &quot;paydate&quot;: &quot;2017-12-01 09:52:51&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2017-11-01 00:00:00&quot;
+                },
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;88.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;10889&quot;,
+                    &quot;paydate&quot;: &quot;2017-12-01 08:38:07&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2017-10-01 00:00:00&quot;
+                },
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;88.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;10099&quot;,
+                    &quot;paydate&quot;: &quot;2017-09-30 15:08:16&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2017-09-01 00:00:00&quot;
+                },
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;88.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;7196&quot;,
+                    &quot;paydate&quot;: &quot;2017-09-30 15:08:16&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2017-08-01 00:00:00&quot;
+                },
+                {
+                    &quot;ispay&quot;: &quot;true&quot;,
+                    &quot;money&quot;: &quot;40.00&quot;,
+                    &quot;payway&quot;: &quot;1&quot;,
+                    &quot;id&quot;: &quot;5139&quot;,
+                    &quot;paydate&quot;: &quot;2017-08-10 22:38:38&quot;,
+                    &quot;shouldpaydate&quot;: &quot;2017-07-01 00:00:00&quot;
+                }
+            ]
+        }
+    ],
+    &quot;shouldPayMoney&quot;: 0.01
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>2.查询党费缴纳详情 <code>GET_PARTY_FEE_DETAIL</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;msgId&quot;:&quot;GET_PARTY_FEE_DETAIL&quot;,&quot;orderId&quot;:&quot;1554185078958630&quot;}
+
+主要入参说明：
+orderId：订单id
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;orderDetail&quot;: {
+        &quot;month&quot;: &quot;2019年02月&quot;,
+        &quot;receiveside&quot;: &quot;烽火通信科技股份有限公司党委&gt;烽火集成公司党总支&gt;第二党支部&quot;,
+        &quot;payway&quot;: 1,
+        &quot;realprice&quot;: 0.01,
+        &quot;userid&quot;: 21310,
+        &quot;paydate&quot;: &quot;2019-04-02 14:08:41&quot;
+    }
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>3.党费代缴列表 <code>GET_OTHER_PAY_LIST</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;id&quot;:186,&quot;index&quot;:0,&quot;msgId&quot;:&quot;GET_OTHER_PAY_LIST&quot;,&quot;pagesize&quot;:20,&quot;userId&quot;:&quot;21310&quot;}
+
+主要入参说明：
+id：党组织id
+userId：用户id
+index：分页起始页
+pagesize：没页查询数目
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;personList&quot;: [
+        {
+            &quot;userId&quot;: 417,
+            &quot;txPic&quot;: &quot;user/neutral.png&quot;,
+            &quot;name&quot;: &quot;张杨&quot;,
+            &quot;mobile&quot;: &quot;17771822356&quot;,
+            &quot;isPay&quot;: 0
+        },
+        ...
+        {
+            &quot;userId&quot;: 21343,
+            &quot;txPic&quot;: &quot;user/neutral.png&quot;,
+            &quot;name&quot;: &quot;周末&quot;,
+            &quot;mobile&quot;: &quot;13163202696&quot;,
+            &quot;isPay&quot;: 0
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+userId：用户id
+txPic：用户头像
+name：用户姓名
+mobile：用户手机号
+isPay：是否缴纳，false未缴纳
+</code></pre>
+
+<p>4.查询第三方支付列表 <code>GET_THIRD_PAY_LIST</code></p>
+<pre><code>url：/app/shop/service.do?text={&quot;msgId&quot;:&quot;GET_THIRD_PAY_LIST&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;thirdPayList&quot;: [
+        {
+            &quot;describle&quot;: &quot;推荐有支付宝账户的用户使用&quot;,
+            &quot;icon&quot;: &quot;thirdPay/20170519045602635242.png&quot;,
+            &quot;name&quot;: &quot;支付宝&quot;,
+            &quot;payway&quot;: &quot;1&quot;,
+            &quot;id&quot;: &quot;1&quot;,
+            &quot;isdefault&quot;: &quot;true&quot;
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>5.订单支付 <code>ORDER_PAY</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;ORDER_PAY&quot;,&quot;orderId&quot;:&quot;1554185078958630&quot;}
+
+YQ-Token：DbKr8%2FdT9t7jsJrhOHQCDOcUHqR3EfYJJWPv5%2BVEXJo%3D
+
+主要入参说明：
+
+输出：
+{
+&quot;code&quot;: &quot;1&quot;,
+&quot;message&quot;: &quot;该订单已支付&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>1.查询组织架构信息 <code>QRY_PARTY_INFO</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;isQryAll&quot;:false,&quot;isQryChild&quot;:false,&quot;msgId&quot;:&quot;QRY_PARTY_INFO&quot;,&quot;type&quot;:0}
+或
+{&quot;id&quot;:&quot;2&quot;,&quot;isQryAll&quot;:false,&quot;isQryChild&quot;:false,&quot;msgId&quot;:&quot;QRY_PARTY_INFO&quot;,&quot;type&quot;:0}
+
+YQ-Token：DbKr8%2FdT9t7jsJrhOHQCDOcUHqR3EfYJJWPv5%2BVEXJo%3D
+
+主要入参说明：
+id：党组织id，若未传id，说明是根节点
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;obj&quot;: [
+        {
+            &quot;leader&quot;: true,
+            &quot;haschild&quot;: false,
+            &quot;name&quot;: &quot;党委委员&quot;,
+            &quot;id&quot;: &quot;-1&quot;
+        },
+        {
+            &quot;haschild&quot;: true,
+            &quot;name&quot;: &quot;国内销售部党总支&quot;,
+            &quot;id&quot;: 2
+        },
+        ...
+        {
+            &quot;haschild&quot;: true,
+            &quot;name&quot;: &quot;新增党支部&quot;,
+            &quot;id&quot;: 641
+        }
+    ],
+    &quot;root&quot;: {
+        &quot;name&quot;: &quot;烽火通信科技股份有限公司党委&quot;,
+        &quot;id&quot;: &quot;-1&quot;
+    }
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+root：党组织根节点
+obj：党组织子节点列表
+haschild：是否有子节点，true有
+name：党组织名称
+id：党组织id
+leader：是否查询组织领导，true是
+</code></pre>
+
+<p>2.根据组织id查询党员信息 <code>QRY_PARTY_MEM_INFO</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;id&quot;:&quot;3&quot;,&quot;isQryAll&quot;:false,&quot;isQryChild&quot;:false,&quot;msgId&quot;:&quot;QRY_PARTY_MEM_INFO&quot;,&quot;type&quot;:0}
+
+主要入参说明：
+id：党组织id
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;obj&quot;: [
+        {
+            &quot;postname&quot;: &quot;&quot;,
+            &quot;name&quot;: &quot;张世海&quot;,
+            &quot;id&quot;: 8,
+            &quot;userid&quot;: 8,
+            &quot;sid&quot;: 99
+        },
+        ...                  
+        {
+            &quot;postname&quot;: &quot;组织委员&quot;,
+            &quot;name&quot;: &quot;段超&quot;,
+            &quot;id&quot;: 12428,
+            &quot;userid&quot;: 12428,
+            &quot;sid&quot;: 100443
+        }
+    ],
+    &quot;fullname&quot;: &quot;烽火通信科技股份有限公司党委&gt;国内销售部党总支&gt;第一党支部&quot;
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+fullname：党组织部门全称
+id：党员id（重构后即用户id）
+userid：用户id
+name：用户姓名
+postname：职务名称
+sid：排序
+</code></pre>
+
+<p>3.查询党员组织隶属信息 <code>QRY_MEM_PARTY_INFO</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;isQryAll&quot;:false,&quot;isQryChild&quot;:false,&quot;msgId&quot;:&quot;QRY_MEM_PARTY_INFO&quot;,&quot;type&quot;:0,&quot;userId&quot;:&quot;21310&quot;}
+
+主要入参说明：
+userId：用户id
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;obj&quot;: {
+        &quot;leader&quot;: true,
+        &quot;postname&quot;: &quot;组织委员&quot;,
+        &quot;joindate&quot;: &quot;2014年11月01日&quot;,
+        &quot;ispay&quot;: false,
+        &quot;postlist&quot;: [
+            {
+                &quot;postname&quot;: &quot;组织委员&quot;,
+                &quot;fullname&quot;: &quot;烽火通信科技股份有限公司党委&gt;烽火集成公司党总支&gt;第二党支部&quot;,
+                &quot;postid&quot;: 100443
+            },
+            {
+                &quot;postname&quot;: &quot;中共党员&quot;,
+                &quot;fullname&quot;: &quot;烽火通信科技股份有限公司党委&gt;烽火集成公司党总支&gt;第二党支部&quot;
+            }
+        ],
+        &quot;fullname&quot;: &quot;烽火通信科技股份有限公司党委&gt;烽火集成公司党总支&gt;第二党支部&quot;,
+        &quot;id&quot;: 21310,
+        &quot;partypoint&quot;: 1484,
+        &quot;state&quot;: 1,
+        &quot;partyid&quot;: 186
+    }
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+id：用户id
+partypoint：党员荣誉值
+partyid：用户所属党组织id
+state：政治面貌 1党员，2预备党员，3群众
+fullname：党组织全称
+ispay：党费是否缴纳，false未缴纳
+joindate：入党时间
+leader：是否有职务，true有
+postname：职务名称
+postlist：职务列表
+</code></pre>
+
+<p>4.根据用户查询组织架构信息 <code>QRY_PARTY_BY_USER</code> （APP未使用）</p>
+<pre><code>url：/app/party/service.do?text=
+</code></pre>
+
+<p>5.根据职位过滤党员信息 <code>QRY_MEM_BY_POST</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;msgId&quot;:&quot;QRY_MEM_BY_POST&quot;,&quot;id&quot;:186,&quot;name&quot;:&quot;组织委员&quot;}
+
+主要入参说明：
+id：组织id
+name：职务名称
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;obj&quot;: []
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>6.根据党员姓名或者职位名称查询党员信息 <code>QRY_MEM_BY_NAME</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;isQryAll&quot;:true,&quot;isQryChild&quot;:false,&quot;msgId&quot;:&quot;QRY_MEM_BY_NAME&quot;,&quot;name&quot;:&quot;隗超&quot;,&quot;type&quot;:-1}
+
+YQ-Token：dYeW7SoNvbzwH%2FZUVgwc5mtGW1viYUJBorAOMCqQKbE%3D
+
+主要入参说明：
+isQryAll：是否全局查询
+isQryChild：是否查询下级组织
+name：用户姓名或职务名
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;obj&quot;:[
+        {
+            &quot;postname&quot;:&quot;组织委员&quot;,
+            &quot;name&quot;:&quot;隗超&quot;,
+            &quot;fullname&quot;:&quot;烽火通信科技股份有限公司党委&gt;烽火集成公司党总支&gt;第二党支部&quot;,
+            &quot;id&quot;:21310,
+            &quot;partyid&quot;:186,
+            &quot;userid&quot;:21310
+        }
+    ]
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>7.根据组织查询leader信息 <code>QRY_PARTY_LEADER</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;id&quot;:&quot;-1&quot;,&quot;isQryAll&quot;:false,&quot;isQryChild&quot;:false,&quot;msgId&quot;:&quot;QRY_PARTY_LEADER&quot;,&quot;type&quot;:0}
+
+YQ-Token：DbKr8%2FdT9t7jsJrhOHQCDOcUHqR3EfYJJWPv5%2BVEXJo%3D
+
+主要入参说明：
+id：党组织id
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;obj&quot;: [
+        {
+            &quot;postname&quot;: &quot;党务接口人&quot;,
+            &quot;name&quot;: &quot;姚雪春&quot;,
+            &quot;id&quot;: 11370,
+            &quot;userid&quot;: 11370
+        },
+        ...          
+        {
+            &quot;postname&quot;: &quot;书记&quot;,
+            &quot;name&quot;: &quot;李广成&quot;,
+            &quot;id&quot;: 2340,
+            &quot;userid&quot;: 2340
+        }
+    ],
+    &quot;fullname&quot;: &quot;烽火通信科技股份有限公司党委&quot;
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+fullname：部门名称
+id：党员id（重构后即用户id）
+userid：用户id
+postname：职务名称
+name：用户姓名
+</code></pre>
+
+<p>8.点击头像查看用户信息 <code>APP093</code></p>
+<pre><code>url：/app/service.do?text={&quot;ids&quot;:[&quot;21310&quot;,&quot;18439&quot;],&quot;msgId&quot;:&quot;APP093&quot;,&quot;userId&quot;:&quot;18439&quot;}
+
+主要入参说明：
+ids：第一个值是登录用户id，第二个值是被查看的用户id
+userId：被查看用户id
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;desp&quot;: &quot;&quot;,
+    &quot;groupId&quot;: &quot;&quot;,
+    &quot;createdate&quot;: &quot;&quot;,
+    &quot;isFriend&quot;: false,
+    &quot;isFamily&quot;: false,
+    &quot;user&quot;: {
+        &quot;level&quot;: &quot;3&quot;,
+        &quot;sex&quot;: &quot;true&quot;,
+        &quot;birth&quot;: &quot;&quot;,
+        &quot;points&quot;: &quot;284&quot;,
+        &quot;intro&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;琚兆权&quot;,
+        &quot;company&quot;: &quot;国内销售部&quot;,
+        &quot;treasure&quot;: &quot;40&quot;,
+        &quot;fullname&quot;: &quot;烽火通信科技股份有限公司&gt;国内销售部&gt;综合管理部&quot;,
+        &quot;id&quot;: &quot;18439&quot;,
+        &quot;department&quot;: &quot;综合管理部&quot;,
+        &quot;levelname&quot;: &quot;无名之辈&quot;,
+        &quot;txpic&quot;: &quot;user/neutral.png&quot;,
+        &quot;email&quot;: &quot;zqju1@fiberhome.com&quot;,
+        &quot;isenabled&quot;: &quot;true&quot;,
+        &quot;isfiberhome&quot;: &quot;true&quot;
+    },
+    &quot;relation&quot;: &quot;&quot;
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>1.提交入党申请 <code>ADD_PARTY_APPLY</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;applyDate&quot;:&quot;2019-04-04 13:45:05&quot;,&quot;attachList&quot;:[{&quot;name&quot;:&quot;入党申请书2019-04-04&quot;,&quot;type&quot;:1,&quot;url&quot;:&quot;http://yq-fiberhome-test.img-cn-hangzhou.aliyuncs.com//party/temp/20190404134504990955.jpeg&quot;}],&quot;msgId&quot;:&quot;ADD_PARTY_APPLY&quot;,&quot;partyId&quot;:&quot;-1&quot;,&quot;state&quot;:3,&quot;userId&quot;:&quot;21274&quot;}
+
+主要入参说明：
+applyDate：提交时间
+state：政治面貌 1党员，2预备党员，3群众
+name：申请材料名称
+type：申请材料类型
+url：附件存储服务器地址
+
+输出：
+{&quot;code&quot;:&quot;0&quot;,&quot;message&quot;:&quot;成功。&quot;}
+
+主要出参说明：
+</code></pre>
+
+<p>2.查询入党申请记录 <code>QRY_PARTY_APPLY_INFO</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;msgId&quot;:&quot;QRY_PARTY_APPLY_INFO&quot;,&quot;userId&quot;:&quot;21274&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;list&quot;: [
+        {
+            &quot;createdate&quot;: &quot;2019-04-04 13:45:05&quot;,
+            &quot;id&quot;: &quot;109&quot;,
+            &quot;type&quot;: &quot;1&quot;
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明
+</code></pre>
+
+<p>3.查询入党申请记录详情 <code>QRY_PARTY_APPLY_INFO_DETAIL</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;id&quot;:109,&quot;msgId&quot;:&quot;QRY_PARTY_APPLY_INFO_DETAIL&quot;}
+
+YQ-Token:NiJiEtPWHh2OAseC7%2ByUJKN2FcUBr4xZOomQUahCKsA%3D 
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;list&quot;: [
+        {
+            &quot;name&quot;: &quot;入党申请书2019-04-04&quot;,
+            &quot;createdate&quot;: &quot;2019-04-04 13:45:05&quot;,
+            &quot;fullname&quot;: &quot;烽火通信科技股份有限公司党委&quot;,
+            &quot;type&quot;: &quot;1&quot;,
+            &quot;url&quot;: &quot;http://yq-fiberhome-test.img-cn-hangzhou.aliyuncs.com//party/temp/20190404134504990955.jpeg&quot;
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明
+</code></pre>
+
+<p>4.查询入党申请材料类型 <code>QRY_APPLY_ATTACH_TYPE</code></p>
+<pre><code>url：/app/party/service.do?text={&quot;msgId&quot;:&quot;QRY_APPLY_ATTACH_TYPE&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;list&quot;: [
+        {
+            &quot;name&quot;: &quot;入党申请书&quot;,
+            &quot;type&quot;: &quot;1&quot;
+        },
+        {
+            &quot;name&quot;: &quot;思想汇报&quot;,
+            &quot;type&quot;: &quot;2&quot;
+        },
+        {
+            &quot;name&quot;: &quot;学习心得&quot;,
+            &quot;type&quot;: &quot;3&quot;
+        },
+        {
+            &quot;name&quot;: &quot;其他&quot;,
+            &quot;type&quot;: &quot;4&quot;
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明
+</code></pre>
+
+<p>1.选修和必修的已完成（指掌上党校是否学习，且若关联考试活动已考）、待考活动、待缴党费， 提醒数量 <code>PARTY_BUILDING_REMIND_AMOUNT</code></p>
+<pre><code>url：/app/newsActivity/service.do?text= {&quot;department&quot;:&quot;02A83080&quot;,&quot;msgId&quot;:&quot;PARTY_BUILDING_REMIND_AMOUNT&quot;,&quot;userId&quot;:&quot;21310&quot;}
+
+主要入参说明：
+department：用户所属部门
+userId：用户id
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;unlearnedNum&quot;: 2,
+    &quot;unpayNum&quot;: 3,
+    &quot;unexamedNum&quot;: 19
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+unlearnedNum：未学数量
+unpayNum：未缴费数量
+unexamedNum：未考试数量
+</code></pre>
+
+<p>2.选修和必修的完成（指掌上党校是否学习，且若关联考试活动已考）：已学、未学，考试活动：已考、待考  列表 <code>PARTY_BUILDING_REMIND_LIST</code></p>
+<pre><code>url：/app/newsActivity/service.do?text={&quot;categoryId&quot;:24,&quot;categoryType&quot;:1,&quot;department&quot;:&quot;02A83080&quot;,&quot;index&quot;:0,&quot;isComplete&quot;:false,&quot;msgId&quot;:&quot;PARTY_BUILDING_REMIND_LIST&quot;,&quot;userId&quot;:&quot;21310&quot;}
+
+主要入参说明：
+categoryId：栏目id
+categoryType：栏目类型，1资讯，2活动
+userId：用户id
+department：用户部门id
+资讯学习：&quot;categoryId&quot;:24,&quot;categoryType&quot;:1
+考试活动：&quot;categoryId&quot;:94,&quot;categoryType&quot;:2
+是否学习，是否考试：isComplete，是true，否false
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;count&quot;: 2,
+    &quot;index&quot;: 0,
+    &quot;currentDate&quot;: &quot;2019-04-02 10:04:12&quot;,
+    &quot;objectList&quot;: [
+        {
+            &quot;id&quot;: &quot;1554106690551198&quot;,
+            &quot;objectType&quot;: 1,
+            &quot;title&quot;: &quot;测试学习时长-勿删&quot;,
+            &quot;titleImage&quot;: [
+                &quot;news/2019040104175944716.PNG&quot;
+            ],
+            &quot;type&quot;: &quot;1&quot;,
+            &quot;isAtlas&quot;: false,
+            &quot;source&quot;: &quot;&quot;,
+            &quot;pviews&quot;: 7,
+            &quot;commentCount&quot;: 0,
+            &quot;layout&quot;: 1,
+            &quot;isView&quot;: false,
+            &quot;createDate&quot;: &quot;2019-04-01 16:18:11&quot;,
+            &quot;orgId&quot;: &quot;-1&quot;,
+            &quot;isShare&quot;: true,
+            &quot;isComment&quot;: true,
+            &quot;isLive&quot;: false,
+            &quot;updateTime&quot;: &quot;2019-04-01 16:18:31&quot;,
+            &quot;isRequired&quot;: 2,
+            &quot;liveMap&quot;: {}
+        },
+        {
+            &quot;id&quot;: &quot;1553850949833416&quot;,
+            &quot;objectType&quot;: 1,
+            &quot;title&quot;: &quot;定时任务发布0329&quot;,
+            &quot;titleImage&quot;: [
+                &quot;news/20190329051452184570.jpg&quot;
+            ],
+            &quot;type&quot;: &quot;3&quot;,
+            &quot;isAtlas&quot;: false,
+            &quot;source&quot;: &quot;&quot;,
+            &quot;pviews&quot;: 2,
+            &quot;commentCount&quot;: 0,
+            &quot;layout&quot;: 1,
+            &quot;isView&quot;: false,
+            &quot;createDate&quot;: &quot;2019-03-29 17:15:50&quot;,
+            &quot;orgId&quot;: &quot;-1&quot;,
+            &quot;isShare&quot;: true,
+            &quot;isComment&quot;: true,
+            &quot;isLive&quot;: false,
+            &quot;updateTime&quot;: &quot;2019-03-30 14:22:51&quot;,
+            &quot;isRequired&quot;: 2,
+            &quot;liveMap&quot;: {}
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>3.从资讯详情退出接口（记录学习时长）<code>NEWS_DETAIL_QUIT</code></p>
+<pre><code>url：/app/newsActivity/service.do?text={&quot;currentStudyTime&quot;:&quot;25728&quot;,&quot;msgId&quot;:&quot;NEWS_DETAIL_QUIT&quot;,&quot;objectId&quot;:&quot;9140&quot;,&quot;userId&quot;:&quot;21274&quot;}
+
+主要入参说明：
+objectId：资讯id
+userId：用户id
+currentStudyTime：用户已学时长
+
+输出：
+{
+    &quot;code&quot;:&quot;0&quot;,
+    &quot;message&quot;:&quot;成功。&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>1.获取党建园地栏目 <code>APP155</code></p>
+<pre><code>url：/app/newsActivity/service.do?text={&quot;menuId&quot;:1,&quot;msgId&quot;:&quot;APP155&quot;,&quot;userId&quot;:&quot;21274&quot;}
+
+YQ-Token：NiJiEtPWHh2OAseC7%2ByUJKN2FcUBr4xZOomQUahCKsA%3D 
+
+关键入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;categoryList&quot;: [
+        {
+            &quot;name&quot;: &quot;党员活动室 &quot;,
+            &quot;id&quot;: &quot;56&quot;,
+            &quot;partyid&quot;: &quot;88,190,194,195,197,199,112,630,114,631,632,116,633,90,634,118,92,94,96,11,13,15,17,18,120,122,2,3,124,5,126,7,128,9,20,23,24,25,26,28,130,373,132,134,136,138,31,32,34,35,36,37,39,140,141,384,386,145,41,43,45,47,49,153,154,155,156,51,55,56,58,-1,282,201,601,327,602,328,603,60,329,62,64,66,571,330,572,573,574,575,576,577,578,579,70,71,73,75,77,79,180,182,184,580,581,186,582,583,100,188,189,585,587,81,626,83,627,84,628,86&quot;,
+            &quot;type&quot;: &quot;6&quot;,
+            &quot;virtualgroupid&quot;: &quot;&quot;
+        },
+        {
+            &quot;name&quot;: &quot;掌上党校&quot;,
+            &quot;id&quot;: &quot;24&quot;,
+            &quot;partyid&quot;: &quot;null&quot;,
+            &quot;type&quot;: &quot;1&quot;,
+            &quot;virtualgroupid&quot;: &quot;null&quot;
+        },
+        {
+            &quot;name&quot;: &quot;考试&quot;,
+            &quot;id&quot;: &quot;94&quot;,
+            &quot;partyid&quot;: &quot;null&quot;,
+            &quot;type&quot;: &quot;2&quot;,
+            &quot;virtualgroupid&quot;: &quot;null&quot;
+        },
+        {
+            &quot;name&quot;: &quot;党风廉政&quot;,
+            &quot;id&quot;: &quot;79&quot;,
+            &quot;partyid&quot;: &quot;null&quot;,
+            &quot;type&quot;: &quot;1&quot;,
+            &quot;virtualgroupid&quot;: &quot;null&quot;
+        }
+    ],
+    &quot;isCanSend&quot;: false
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+关键出参说明：
+</code></pre>
+
+<p>1.根据栏目获取资讯活动列表 <code>APP150</code></p>
+<pre><code>url：/app/newsActivity/service.do?text={&quot;categoryId&quot;:24,&quot;categoryType&quot;:1,&quot;department&quot;:&quot;02A83080&quot;,&quot;index&quot;:0,&quot;isComplete&quot;:false,&quot;msgId&quot;:&quot;APP150&quot;,&quot;userId&quot;:&quot;21274&quot;}
+
+关键入参说明：
+categoryId：栏目id
+categoryType：栏目类型：1资讯，2活动
+userId：用户id
+department：用户所属部门
+查询下一页内容，增加入参lastDate：上一页最后一条记录的更新时间
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;count&quot;:6,
+    &quot;index&quot;:0,
+    &quot;currentDate&quot;:&quot;2019-03-30 15:24:49&quot;,
+    &quot;objectList&quot;:[
+        {
+            &quot;id&quot;:&quot;9140&quot;,
+            &quot;objectType&quot;:1,
+            &quot;title&quot;:&quot;中国共产党廉洁自律准则&quot;,
+            &quot;titleImage&quot;:[
+                &quot;news/9140/20180516014959612819.jpg&quot;
+            ],
+            &quot;type&quot;:&quot;1&quot;,
+            &quot;isAtlas&quot;:false,
+            &quot;source&quot;:&quot;总裁办公室（党委办公室）&quot;,
+            &quot;pviews&quot;:4831,
+            &quot;commentCount&quot;:1470,
+            &quot;endTime&quot;:&quot;&quot;,
+            &quot;layout&quot;:1,
+            &quot;digest&quot;:&quot;&quot;,
+            &quot;isView&quot;:true,
+            &quot;createDate&quot;:&quot;2018-05-16 13:50:00&quot;,
+            &quot;orgId&quot;:&quot;02A00001&quot;,
+            &quot;isShare&quot;:true,
+            &quot;isComment&quot;:true,
+            &quot;isLive&quot;:false,
+            &quot;updateTime&quot;:&quot;2018-05-16 13:50:00&quot;,
+            &quot;isRequired&quot;:2,
+            &quot;liveMap&quot;:{
+
+            }
+        },
+        ...
+        {
+            &quot;id&quot;:&quot;7869&quot;,
+            &quot;objectType&quot;:1,
+            &quot;title&quot;:&quot;党要管党首先要从党内政治生活管起，从严治党首先要从党内政治生活严起&quot;,
+            &quot;titleImage&quot;:[
+                &quot;news/7869/20180420045545141126.jpg&quot;
+            ],
+            &quot;type&quot;:&quot;1&quot;,
+            &quot;isAtlas&quot;:false,
+            &quot;source&quot;:&quot;总裁办公室（党委办公室）&quot;,
+            &quot;pviews&quot;:8436,
+            &quot;commentCount&quot;:1076,
+            &quot;endTime&quot;:&quot;&quot;,
+            &quot;layout&quot;:1,
+            &quot;digest&quot;:&quot;&quot;,
+            &quot;isView&quot;:false,
+            &quot;createDate&quot;:&quot;2018-03-21 10:15:41&quot;,
+            &quot;orgId&quot;:&quot;02A00001&quot;,
+            &quot;isShare&quot;:true,
+            &quot;isComment&quot;:true,
+            &quot;isLive&quot;:false,
+            &quot;updateTime&quot;:&quot;2018-03-21 10:15:41&quot;,
+            &quot;isRequired&quot;:2,
+            &quot;liveMap&quot;:{
+
+            }
+        }
+    ]
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+关键出参说明：
+id：资讯/活动id
+objectType：1资讯，2活动，3悠视，4杂志的文章，5杂志
+title：标题
+titleImage：标题图片
+type：资讯类型：1文字，2图片，3详情视频，4专题，5网页，6列表视频，7公告，10直播间
+      活动类型：报名（1无报名信息,2有报名信息），4投票，5问卷，6考试，7订购
+isAtlas：是否为图集
+source：资讯来源
+pviews：浏览量
+commentCount：评论量
+endTime：活动结束时间
+layout：布局形式（1：左右；2：上下；3：三张标题图片一次排开）
+digest：摘要
+isView：资讯是否阅读
+createDate：创建时间
+orgId：归属部门或党组织
+isShare：是否可分享
+isComment：是否可评论
+isLive：是否为直播
+updateTime：更新时间
+isRequired：是否必修 2 必修 1 选修 null无处理
+liveMap：直播间详情map
+</code></pre>
+
+<p>2.查询资讯、活动、杂志、杂志的文章 <code>APP011</code></p>
+<pre><code>url：/app/newsActivity/service.do?text={&quot;department&quot;:&quot;02A83080&quot;,&quot;index&quot;:&quot;0&quot;,&quot;keyword&quot;:&quot;烽火&quot;,&quot;msgId&quot;:&quot;APP011&quot;,&quot;userId&quot;:&quot;21310&quot;}
+
+关键入参说明：
+department：用户所属部门
+keyword：搜索关键字
+userId：用户id
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;newsList&quot;:[
+        {
+            &quot;id&quot;:&quot;1734&quot;,
+            &quot;objectType&quot;:2,
+            &quot;title&quot;:&quot;行动准则考试【烽火技服】&quot;,
+            &quot;titleImage&quot;:[
+                &quot;activity/1734/20181116111431675425.jpg&quot;
+            ],
+            &quot;type&quot;:&quot;6&quot;,
+            &quot;source&quot;:&quot;总裁领导&quot;,
+            &quot;pviews&quot;:2624,
+            &quot;commentCount&quot;:60,
+            &quot;participant&quot;:1012,
+            &quot;endTime&quot;:&quot;2018-12-20 17:30:00&quot;,
+            &quot;isView&quot;:false,
+            &quot;createDate&quot;:&quot;2018-11-16 10:59:23&quot;,
+            &quot;orgId&quot;:&quot;02A00001&quot;,
+            &quot;isShare&quot;:true,
+            &quot;isComment&quot;:true,
+            &quot;liveMap&quot;:{
+
+            }
+        },
+        {
+            &quot;id&quot;:&quot;1553132705228760&quot;,
+            &quot;objectType&quot;:5,
+            &quot;title&quot;:&quot;《321新建杂志测试》 第23期&quot;,
+            &quot;titleImage&quot;:[
+                &quot;[]&quot;
+            ],
+            &quot;type&quot;:&quot;1&quot;,
+            &quot;source&quot;:&quot;&quot;,
+            &quot;pviews&quot;:12,
+            &quot;commentCount&quot;:0,
+            &quot;endTime&quot;:&quot;&quot;,
+            &quot;digest&quot;:&quot;烽火23期00000&quot;,
+            &quot;isView&quot;:false,
+            &quot;createDate&quot;:&quot;2019-03-21 09:45:05&quot;,
+            &quot;orgId&quot;:&quot;1553072579245885&quot;,
+            &quot;isComment&quot;:true,
+            &quot;liveMap&quot;:{
+
+            }
+        },
+        {
+            &quot;id&quot;:&quot;14112&quot;,
+            &quot;objectType&quot;:1,
+            &quot;title&quot;:&quot;【烽火拍客】丝巾之花vlog&quot;,
+            &quot;titleImage&quot;:[
+                &quot;news/14112/20190309105422128947.jpg&quot;
+            ],
+            &quot;type&quot;:&quot;3&quot;,
+            &quot;isAtlas&quot;:false,
+            &quot;source&quot;:&quot;线缆产出线&quot;,
+            &quot;pviews&quot;:225,
+            &quot;commentCount&quot;:62,
+            &quot;endTime&quot;:&quot;&quot;,
+            &quot;layout&quot;:2,
+            &quot;digest&quot;:&quot;&quot;,
+            &quot;categoryName&quot;:&quot;乐在烽火&quot;,
+            &quot;isView&quot;:false,
+            &quot;createDate&quot;:&quot;2019-03-09 10:54:22&quot;,
+            &quot;orgId&quot;:&quot;02A21800&quot;,
+            &quot;isShare&quot;:true,
+            &quot;isComment&quot;:true,
+            &quot;videoUrl&quot;:&quot;http://111.47.11.70:8006/fenghuolive/00000000000000010000000000002779&quot;,
+            &quot;videoTime&quot;:40,
+            &quot;liveMap&quot;:{
+
+            }
+        },
+        {
+            &quot;id&quot;:&quot;14110&quot;,
+            &quot;objectType&quot;:1,
+            &quot;title&quot;:&quot;烽火光纤公司女神秀出美&quot;,
+            &quot;titleImage&quot;:[
+                &quot;news/14110/20190308020218606434.jpg&quot;
+            ],
+            &quot;type&quot;:&quot;3&quot;,
+            &quot;isAtlas&quot;:false,
+            &quot;source&quot;:&quot;线缆产出线&quot;,
+            &quot;pviews&quot;:610,
+            &quot;commentCount&quot;:95,
+            &quot;endTime&quot;:&quot;&quot;,
+            &quot;layout&quot;:1,
+            &quot;digest&quot;:&quot;&quot;,
+            &quot;categoryName&quot;:&quot;乐在烽火&quot;,
+            &quot;isView&quot;:false,
+            &quot;createDate&quot;:&quot;2019-03-08 14:02:19&quot;,
+            &quot;orgId&quot;:&quot;02A21800&quot;,
+            &quot;isShare&quot;:true,
+            &quot;isComment&quot;:true,
+            &quot;videoUrl&quot;:&quot;http://111.47.11.70:8006/fenghuolive/00000000000000010000000000002778&quot;,
+            &quot;videoSize&quot;:26214400,
+            &quot;videoTime&quot;:340,
+            &quot;liveMap&quot;:{
+
+            }
+        },
+        {
+            &quot;id&quot;:&quot;1910&quot;,
+            &quot;objectType&quot;:2,
+            &quot;title&quot;:&quot;烽火集成3月烘焙活动调查&quot;,
+            &quot;titleImage&quot;:[
+                &quot;activity/1910/20190306112932499989.png&quot;
+            ],
+            &quot;type&quot;:&quot;5&quot;,
+            &quot;source&quot;:&quot;武汉烽火信息集成技术有限公司&quot;,
+            &quot;pviews&quot;:230,
+            &quot;commentCount&quot;:6,
+            &quot;participant&quot;:59,
+            &quot;endTime&quot;:&quot;2019-03-08 11:00:00&quot;,
+            &quot;isView&quot;:false,
+            &quot;createDate&quot;:&quot;2019-03-06 11:29:32&quot;,
+            &quot;orgId&quot;:&quot;02AC0000&quot;,
+            &quot;isShare&quot;:true,
+            &quot;isComment&quot;:true,
+            &quot;liveMap&quot;:{
+
+            }
+        },
+        {
+            &quot;id&quot;:&quot;13978&quot;,
+            &quot;objectType&quot;:1,
+            &quot;title&quot;:&quot;烽火通信公司党委组织召开2018年度民主生活会&quot;,
+            &quot;titleImage&quot;:[
+                &quot;news/13978/2019022511234327271.png&quot;
+            ],
+            &quot;type&quot;:&quot;1&quot;,
+            &quot;isAtlas&quot;:false,
+            &quot;source&quot;:&quot;总裁领导&quot;,
+            &quot;pviews&quot;:2250,
+            &quot;commentCount&quot;:935,
+            &quot;endTime&quot;:&quot;&quot;,
+            &quot;layout&quot;:1,
+            &quot;digest&quot;:&quot;&quot;,
+            &quot;isView&quot;:false,
+            &quot;createDate&quot;:&quot;2019-02-25 11:23:43&quot;,
+            &quot;orgId&quot;:&quot;02A00001&quot;,
+            &quot;isShare&quot;:true,
+            &quot;isComment&quot;:true,
+            &quot;liveMap&quot;:{
+
+            }
+        },
+        {
+            &quot;id&quot;:&quot;13972&quot;,
+            &quot;objectType&quot;:1,
+            &quot;title&quot;:&quot;烽火科技园食堂2月25日-3月1日菜谱&quot;,
+            &quot;titleImage&quot;:[
+                &quot;news/13972/20190225110629356415.jpg&quot;
+            ],
+            &quot;type&quot;:&quot;2&quot;,
+            &quot;isAtlas&quot;:false,
+            &quot;source&quot;:&quot;综合保障部&quot;,
+            &quot;pviews&quot;:1219,
+            &quot;commentCount&quot;:234,
+            &quot;endTime&quot;:&quot;&quot;,
+            &quot;layout&quot;:1,
+            &quot;digest&quot;:&quot;&quot;,
+            &quot;isView&quot;:false,
+            &quot;createDate&quot;:&quot;2019-02-25 11:06:29&quot;,
+            &quot;orgId&quot;:&quot;02A00028&quot;,
+            &quot;isShare&quot;:true,
+            &quot;isComment&quot;:true,
+            &quot;liveMap&quot;:{
+
+            }
+        },
+        {
+            &quot;id&quot;:&quot;13811&quot;,
+            &quot;objectType&quot;:1,
+            &quot;title&quot;:&quot;烽火通信《感恩有你》&quot;,
+            &quot;titleImage&quot;:[
+                &quot;news/13811/20190212025712503795.jpg&quot;
+            ],
+            &quot;type&quot;:&quot;3&quot;,
+            &quot;isAtlas&quot;:false,
+            &quot;source&quot;:&quot;总裁领导&quot;,
+            &quot;pviews&quot;:2000,
+            &quot;commentCount&quot;:203,
+            &quot;endTime&quot;:&quot;&quot;,
+            &quot;layout&quot;:1,
+            &quot;digest&quot;:&quot;&quot;,
+            &quot;categoryName&quot;:&quot;乐在烽火&quot;,
+            &quot;isView&quot;:false,
+            &quot;createDate&quot;:&quot;2019-02-12 14:57:12&quot;,
+            &quot;orgId&quot;:&quot;02A00001&quot;,
+            &quot;isShare&quot;:true,
+            &quot;isComment&quot;:true,
+            &quot;videoUrl&quot;:&quot;http://111.47.11.70:8006/fenghuolive/00000000000000010000000000002759&quot;,
+            &quot;videoSize&quot;:68157440,
+            &quot;videoTime&quot;:380,
+            &quot;liveMap&quot;:{
+
+            }
+        }
+    ],
+    &quot;count&quot;:8,
+    &quot;currentDate&quot;:&quot;2019-04-03 17:09:22&quot;
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+关键出参说明：
+id：对象id（资讯，活动，杂志的文章，杂志）
+objectType：1资讯，2活动，3悠视，4杂志的文章，5杂志
+</code></pre>
+
+<p>3.评论 <code>APP039</code></p>
+<pre><code>url：/app/service.do?text={&quot;content&quot;:&quot;[撇嘴][撇嘴]&quot;,&quot;imageUrl&quot;:[&quot;comment/activity/20190401110031911968.jpg&quot;],&quot;msgId&quot;:&quot;APP039&quot;,&quot;targetId&quot;:&quot;1554083500877412&quot;,&quot;targetType&quot;:&quot;1&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+关键入参说明：
+targetId：对象id
+targetType：评论对象：1活动，2资讯，3商品，4杂志的文章
+userId：用户id
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;id&quot;:&quot;1554087632464461&quot;,
+    &quot;floor&quot;:1
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+关键出参说明：
+id：评论id
+floor：楼层
+</code></pre>
+
+<p>4.查找评论 <code>APP040</code></p>
+<pre><code>url：/app/service.do?text={&quot;index&quot;:&quot;0&quot;,&quot;msgId&quot;:&quot;APP040&quot;,&quot;targetId&quot;:&quot;1554083500877412&quot;,&quot;targetType&quot;:&quot;1&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+关键入参说明：
+targetId：对象id
+targetType：评论对象：1活动，2资讯，3商品，4杂志的文章
+userId：用户id
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;count&quot;:1,
+    &quot;currentDate&quot;:&quot;2019-04-01 11:10:34&quot;,
+    &quot;isNick&quot;:false,
+    &quot;objList&quot;:[
+        {
+            &quot;commentType&quot;:0,
+            &quot;content&quot;:&quot;[撇嘴][撇嘴]&quot;,
+            &quot;createDate&quot;:&quot;2019-04-01 11:00:32&quot;,
+            &quot;floor&quot;:1,
+            &quot;id&quot;:&quot;1554087632464461&quot;,
+            &quot;imageUrl&quot;:[
+                &quot;comment/activity/20190401110031911968.jpg&quot;
+            ],
+            &quot;isLike&quot;:true,
+            &quot;isNick&quot;:false,
+            &quot;likeNum&quot;:1,
+            &quot;name&quot;:&quot;张0005&quot;,
+            &quot;replyId&quot;:0,
+            &quot;replyList&quot;:[
+
+            ],
+            &quot;replyName&quot;:&quot;&quot;,
+            &quot;targetId&quot;:&quot;1554083500877412&quot;,
+            &quot;userId&quot;:121788,
+            &quot;userpic&quot;:&quot;&quot;
+        }
+    ]
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+关键出参说明：
+isNick：是否匿名
+</code></pre>
+
+<p>5.删除评论 <code>APP054</code></p>
+<pre><code>url：/app/service.do?text={&quot;commentId&quot;:&quot;1554087632464461&quot;,&quot;msgId&quot;:&quot;APP054&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+关键入参说明：
+commentId：评论id
+userId：用户id
+
+输出：
+{
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功。&quot;
+}
+
+关键出参说明：
+</code></pre>
+
+<p>6.评论点赞 <code>COMMENT_LIKE</code></p>
+<pre><code>url：/app/service.do?text={&quot;commentId&quot;:&quot;1554201581024863&quot;,&quot;msgId&quot;:&quot;COMMENT_LIKE&quot;,&quot;userId&quot;:&quot;21310&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;likeNum&quot;: 1
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>7.获取举报类型 <code>REPORT_TYPE</code></p>
+<pre><code>url：/app/report/service.do?text={&quot;msgId&quot;:&quot;REPORT_TYPE&quot;}
+
+关键入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;reasonList&quot;: [
+        {
+            &quot;showindex&quot;: &quot;1&quot;,
+            &quot;name&quot;: &quot;广告&quot;,
+            &quot;id&quot;: &quot;1&quot;,
+            &quot;status&quot;: &quot;1&quot;
+        },
+        {
+            &quot;showindex&quot;: &quot;2&quot;,
+            &quot;name&quot;: &quot;色情&quot;,
+            &quot;id&quot;: &quot;2&quot;,
+            &quot;status&quot;: &quot;1&quot;
+        },
+        {
+            &quot;showindex&quot;: &quot;3&quot;,
+            &quot;name&quot;: &quot;反动&quot;,
+            &quot;id&quot;: &quot;3&quot;,
+            &quot;status&quot;: &quot;1&quot;
+        },
+        {
+            &quot;showindex&quot;: &quot;4&quot;,
+            &quot;name&quot;: &quot;谣言&quot;,
+            &quot;id&quot;: &quot;4&quot;,
+            &quot;status&quot;: &quot;1&quot;
+        },
+        {
+            &quot;showindex&quot;: &quot;5&quot;,
+            &quot;name&quot;: &quot;欺诈或恶意营销&quot;,
+            &quot;id&quot;: &quot;5&quot;,
+            &quot;status&quot;: &quot;1&quot;
+        },
+        {
+            &quot;showindex&quot;: &quot;6&quot;,
+            &quot;name&quot;: &quot;谩骂&quot;,
+            &quot;id&quot;: &quot;6&quot;,
+            &quot;status&quot;: &quot;1&quot;
+        },
+        {
+            &quot;showindex&quot;: &quot;7&quot;,
+            &quot;name&quot;: &quot;其它&quot;,
+            &quot;id&quot;: &quot;7&quot;,
+            &quot;status&quot;: &quot;1&quot;
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+关键出参说明：
+id：举报类型id
+name：举报原因
+status：0未启用 1已启用
+showindex：显示顺序
+</code></pre>
+
+<p>8.举报 <code>REPORT_ADD</code></p>
+<pre><code>url：/app/report/service.do?text={&quot;describe&quot;:&quot;xxx&quot;,&quot;msgId&quot;:&quot;REPORT_ADD&quot;,&quot;reason&quot;:&quot;广告&quot;,&quot;source&quot;:2,&quot;targetId&quot;:&quot;2200764&quot;,&quot;type&quot;:1,&quot;userId&quot;:&quot;21310&quot;}
+
+主要入参说明：
+targetId：举报目标ID(评论id)
+reason：举报原因
+describe：举报描述
+source：1公共 2企业
+type：1评论 2圈子消息
+userId：用户ID
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;id&quot;: 38
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+id：举报id
+</code></pre>
+
+<p>9.分享 <code>APP065</code></p>
+<pre><code>url：/app/service.do?text={&quot;msgId&quot;:&quot;APP065&quot;,&quot;userId&quot;:&quot;21310&quot;}
+
+关键入参说明：
+
+输出：
+{
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功。&quot;
+}
+
+关键出参说明：
+</code></pre>
+
+<p>10.添加收藏 <code>FAVORITES_ADD</code></p>
+<pre><code>url：/app/favorites/service.do?text={&quot;msgId&quot;:&quot;APP065&quot;,&quot;userId&quot;:&quot;21310&quot;}
+
+关键入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;id&quot;: 32827
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+关键出参说明：
+</code></pre>
+
+<p>11.删除收藏 <code>FAVORITES_DELETE</code></p>
+<pre><code>url：/app/favorites/service.do?text={&quot;id&quot;:&quot;30558&quot;,&quot;msgId&quot;:&quot;FAVORITES_DELETE&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+关键入参说明：
+
+输出：
+{
+&quot;resultMap&quot;:{
+
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+关键出参说明：
+</code></pre>
+
+<p>1.资讯详情 <code>APP009</code></p>
+<pre><code>url：/app/newsActivity/service.do?text={&quot;msgId&quot;:&quot;APP009&quot;,&quot;objectId&quot;:&quot;11313&quot;,&quot;opinion&quot;:0,&quot;userId&quot;:&quot;21274&quot;}
+
+主要入参说明：
+objectId：资讯id
+userId：用户id
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;photoList&quot;:[
+
+    ],
+    &quot;contentImages&quot;:[
+
+    ],
+    &quot;imagesUrl&quot;:[
+
+    ],
+    &quot;attachCount&quot;:0,
+    &quot;newsContent&quot;:&quot;选修鉴权验证&quot;,
+    &quot;count&quot;:5,
+    &quot;currentDate&quot;:&quot;2019-03-30 16:21:08&quot;,
+    &quot;totalStudyTime&quot;:26,
+    &quot;isNick&quot;:false,
+    &quot;attachList&quot;:[
+
+    ],
+    &quot;titleImage&quot;:[
+        &quot;news/11313/20180921091149521801.jpg&quot;
+    ],
+    &quot;isStudyNews&quot;:true,
+    &quot;attachFileList&quot;:[
+
+    ],
+    &quot;isRelatedActivity&quot;:false,
+    &quot;isVote&quot;:false,
+    &quot;newsInfo&quot;:{
+        &quot;orgtype&quot;:&quot;1&quot;,
+        &quot;islive&quot;:&quot;false&quot;,
+        &quot;votecount&quot;:&quot;0&quot;,
+        &quot;isshare&quot;:&quot;true&quot;,
+        &quot;author&quot;:&quot;&quot;,
+        &quot;createdate&quot;:&quot;2018-09-21 09:11:49&quot;,
+        &quot;iscomment&quot;:&quot;true&quot;,
+        &quot;source&quot;:&quot;武汉烽火信息集成技术有限公司&quot;,
+        &quot;title&quot;:&quot;选修鉴权验证&quot;,
+        &quot;type&quot;:&quot;1&quot;,
+        &quot;content&quot;:&quot;选修鉴权验证&quot;,
+        &quot;orgid&quot;:&quot;02AC0000&quot;,
+        &quot;pviews&quot;:&quot;29&quot;,
+        &quot;studytime&quot;:&quot;10&quot;,
+        &quot;titleimage&quot;:&quot;news/11313/20180921091149521801.jpg&quot;,
+        &quot;isinnershare&quot;:&quot;false&quot;,
+        &quot;digest&quot;:&quot;&quot;,
+        &quot;tenantid&quot;:&quot;02000000&quot;,
+        &quot;isatlas&quot;:&quot;false&quot;,
+        &quot;isnick&quot;:&quot;false&quot;,
+        &quot;menuid&quot;:&quot;1&quot;,
+        &quot;treasure&quot;:&quot;0&quot;,
+        &quot;id&quot;:&quot;11313&quot;
+    }
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+主要出参说明：
+isStudyNews：是否是掌上党校资讯，true是，false否
+isRelatedActivity：是否关联考试活动，true是，false否
+studytime：要求学习时长
+totalStudyTime：用户已学时长
+isExamed：是否已考试，true是，false否
+relatedActivityId：关联活动Id
+如果isStudyNews =true，返回isRelatedActivity，totalStudyTime；
+如果isRelatedActivity = true，isExamed=false，返回relatedActivityId
+</code></pre>
+
+<p>2.资讯点赞 <code>APP010</code></p>
+<pre><code>url：/app/newsActivity/service.do?text={&quot;msgId&quot;:&quot;APP010&quot;,&quot;objectId&quot;:&quot;1553850949833416&quot;,&quot;opinion&quot;:0,&quot;userId&quot;:&quot;21310&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;voteCount&quot;:1
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>1.活动详情 <code>APP016</code>，<code>APP216</code>（主要使用APP216，但APP016接口APP有些场景还在用）</p>
+<pre><code>url：/app/newsActivity/service.do?text={&quot;activityId&quot;:&quot;1908&quot;,&quot;department&quot;:&quot;02A83080&quot;,&quot;msgId&quot;:&quot;APP216&quot;,&quot;userId&quot;:&quot;21274&quot;}
+
+主要入参说明：
+activityId：活动id
+department：用户所属部门
+userId：用户id
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;btnName&quot;:&quot;&quot;,
+    &quot;reason&quot;:&quot;您不能参加该活动&quot;,
+    &quot;joincount&quot;:1,
+    &quot;count&quot;:10,
+    &quot;currentDate&quot;:&quot;2019-03-30 16:58:18&quot;,
+    &quot;isNew&quot;:false,
+    &quot;activityInfo&quot;:{
+        &quot;pickuptime&quot;:&quot;&quot;,
+        &quot;tenant_id&quot;:&quot;02000000&quot;,
+        &quot;islottery&quot;:&quot;&quot;,
+        &quot;urltype&quot;:&quot;0&quot;,
+        &quot;isshare&quot;:&quot;true&quot;,
+        &quot;groupto&quot;:&quot;&quot;,
+        &quot;isregular&quot;:&quot;false&quot;,
+        &quot;applybegin&quot;:&quot;&quot;,
+        &quot;content&quot;:&quot;&lt;p&gt;
+&lt;span style=&quot;font-family:Microsoft YaHei;font-size:18px;color:#333333;line-height:2;&quot;&gt;点击观看《历史印象故事》第二集——追光之路（下），参加趣味答题活动。共2题，&lt;strong&gt;&lt;span style=&quot;color:#E53333;&quot;&gt;全部答对将有机会获得500积分。&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt; 
+&lt;/p&gt;
+&lt;p&gt;
+&lt;span style=&quot;font-family:Microsoft YaHei;font-size:18px;color:#333333;line-height:2;&quot;&gt;&lt;span style=&quot;color:#E53333;&quot;&gt;&lt;span style=&quot;color:#000000;&quot;&gt;上一集的“看视频，趣味答题”活动，共计有329位同事全部答对题目进入抽奖环节。经随机抽奖后，&lt;strong&gt;&lt;span style=&quot;color:#FFFFFF;background-color:#E53333;&quot;&gt;得出的最终赢家是：苗韶健sjmiao@fiberhome.com（网络产出线-研发部-集成测试部）&lt;/span&gt;&lt;/strong&gt;恭喜你！获得500积分。&lt;/span&gt;&lt;br /&gt;
+&lt;/span&gt;&lt;/span&gt; 
+&lt;/p&gt;
+&lt;span style=&quot;font-family:Microsoft YaHei;font-size:18px;color:#333333;line-height:2;&quot;&gt;&lt;span style=&quot;font-family:Microsoft YaHei;font-size:18px;color:#333333;line-height:2;&quot;&gt; &lt;/span&gt;奖项：答对2题，&lt;strong&gt;&lt;span style=&quot;color:#E53333;&quot;&gt;随机抽取1人获得500积分&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-family:Microsoft YaHei;font-size:18px;color:#333333;line-height:2;&quot;&gt;&lt;span style=&quot;font-family:Microsoft YaHei;font-size:18px;color:#333333;line-height:2;&quot;&gt; &lt;/span&gt;时间：&lt;strong&gt;&lt;span style=&quot;color:#E53333;&quot;&gt;2月26日下午5：30截止&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-family:Microsoft YaHei;font-size:18px;color:#333333;line-height:2;&quot;&gt;&lt;span style=&quot;font-family:Microsoft YaHei;font-size:18px;color:#333333;line-height:2;&quot;&gt; &lt;/span&gt;视频链接：&lt;a href=&quot;http://www.urlgenerator.com?objectType=1&amp;type=3&amp;isAtlas=false&amp;id=14038&quot; target=&quot;_blank&quot;&gt;历史印象故事第二集《追光之路》（下）&lt;/a&gt;&lt;/span&gt;&quot;,
+        &quot;participant&quot;:&quot;334&quot;,
+        &quot;examtime&quot;:&quot;&quot;,
+        &quot;digest&quot;:&quot;&quot;,
+        &quot;isshowpeople&quot;:&quot;true&quot;,
+        &quot;maxother&quot;:&quot;0&quot;,
+        &quot;typeid&quot;:&quot;6&quot;,
+        &quot;id&quot;:&quot;1908&quot;,
+        &quot;department&quot;:&quot;&quot;,
+        &quot;topictype&quot;:&quot;0&quot;,
+        &quot;selectcount&quot;:&quot;1&quot;,
+        &quot;upperlimit&quot;:&quot;&quot;,
+        &quot;daycount&quot;:&quot;0&quot;,
+        &quot;pickstartdate&quot;:&quot;&quot;,
+        &quot;address&quot;:&quot;&quot;,
+        &quot;imagecount&quot;:&quot;1&quot;,
+        &quot;userpic&quot;:&quot;&quot;,
+        &quot;votecount&quot;:&quot;28&quot;,
+        &quot;mobile&quot;:&quot;&quot;,
+        &quot;endtime&quot;:&quot;2019-03-31 17:30:00&quot;,
+        &quot;groups&quot;:&quot;&quot;,
+        &quot;begintime&quot;:&quot;2019-03-04 10:00:00&quot;,
+        &quot;selectmincount&quot;:&quot;0&quot;,
+        &quot;activityimage&quot;:&quot;&quot;,
+        &quot;iscomment&quot;:&quot;true&quot;,
+        &quot;ordertime&quot;:&quot;&quot;,
+        &quot;isalowfamily&quot;:&quot;false&quot;,
+        &quot;linkman&quot;:&quot;&quot;,
+        &quot;pickenddate&quot;:&quot;&quot;,
+        &quot;isinnershare&quot;:&quot;true&quot;,
+        &quot;isradomexam&quot;:&quot;true&quot;,
+        &quot;applyend&quot;:&quot;&quot;,
+        &quot;name&quot;:&quot;看视频↑答题赢500积分&quot;,
+        &quot;attention&quot;:&quot;&quot;,
+        &quot;isnick&quot;:&quot;false&quot;,
+        &quot;actmincredits&quot;:&quot;0&quot;,
+        &quot;fields&quot;:&quot;&quot;,
+        &quot;party&quot;:&quot;&quot;,
+        &quot;actmintreasure&quot;:&quot;0&quot;,
+        &quot;status&quot;:&quot;1&quot;
+    },
+    &quot;titleImage&quot;:[
+        &quot;activity/1908/20190304101103863141.jpg&quot;
+    ],
+    &quot;isJoin&quot;:true,
+    &quot;newsList&quot;:[
+
+    ],
+    &quot;hasOrder&quot;:false,
+    &quot;userInfos&quot;:[
+        {
+            &quot;name&quot;:&quot;王涛&quot;,
+            &quot;txpic&quot;:&quot;user/neutral.png&quot;,
+            &quot;userid&quot;:&quot;9338&quot;
+        },
+        {
+            &quot;name&quot;:&quot;宋璐丹&quot;,
+            &quot;txpic&quot;:&quot;user/48920_201804241037094025.jpg&quot;,
+            &quot;userid&quot;:&quot;48920&quot;
+        },
+        {
+            &quot;name&quot;:&quot;陈锦涛&quot;,
+            &quot;txpic&quot;:&quot;user/54142_201809090007570900.jpg&quot;,
+            &quot;userid&quot;:&quot;54142&quot;
+        },
+        {
+            &quot;name&quot;:&quot;李鑫&quot;,
+            &quot;txpic&quot;:&quot;user/51281_201809211929863074.jpg&quot;,
+            &quot;userid&quot;:&quot;51281&quot;
+        },
+        {
+            &quot;name&quot;:&quot;黄凯&quot;,
+            &quot;txpic&quot;:&quot;user/23482_201810231455536330.jpg&quot;,
+            &quot;userid&quot;:&quot;23482&quot;
+        },
+        {
+            &quot;name&quot;:&quot;龚小龙&quot;,
+            &quot;txpic&quot;:&quot;user/20495_201706221206735240.jpg&quot;,
+            &quot;userid&quot;:&quot;20495&quot;
+        },
+        {
+            &quot;name&quot;:&quot;王小龙&quot;,
+            &quot;txpic&quot;:&quot;user/neutral.png&quot;,
+            &quot;userid&quot;:&quot;49547&quot;
+        },
+        {
+            &quot;name&quot;:&quot;蔡艳君&quot;,
+            &quot;txpic&quot;:&quot;user/51049_20180703180511877865.jpg&quot;,
+            &quot;userid&quot;:&quot;51049&quot;
+        },
+        {
+            &quot;name&quot;:&quot;彭军亮&quot;,
+            &quot;txpic&quot;:&quot;user/6217_20170603172314628953.jpg&quot;,
+            &quot;userid&quot;:&quot;6217&quot;
+        },
+        {
+            &quot;name&quot;:&quot;李琦&quot;,
+            &quot;txpic&quot;:&quot;user/64849_201812261414728956.jpg&quot;,
+            &quot;userid&quot;:&quot;64849&quot;
+        }
+    ],
+    &quot;isCan&quot;:false,
+    &quot;lotteryUrl&quot;:&quot;&quot;,
+    &quot;isRelatedNews&quot;:false,
+    &quot;isVote&quot;:false
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+主要出参说明：
+isCan：是否能参加
+isJoin：是否已参加
+typeid：活动类型：报名（1无报名信息,2有报名信息），4投票，5问卷，6考试，7订购
+isRelatedNews：是否关联资讯，true是，false否
+isLearnedOfRelatedNews：关联资讯是否学习，true是，false否
+relatedNewsInfo：关联资讯信息
+如果isRelatedNews=true，返回isLearnedOfRelatedNews；
+如果isLearnedOfRelatedNews = false，返回relatedNewsInfo
+</code></pre>
+
+<p>2.活动点赞 <code>APP017</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554099874626159&quot;,&quot;msgId&quot;:&quot;APP017&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+主要入参说明：
+activityId：活动id
+userId：用户id
+
+输出：
+{
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功。&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>3.参加活动 <code>APP018</code></p>
+<pre><code>url：/app/service.do?text=
+考试：{&quot;activityId&quot;:&quot;1554083500877412&quot;,&quot;answerList&quot;:[{&quot;optionId&quot;:&quot;1554083523375983&quot;,&quot;topicId&quot;:&quot;1554083523364349&quot;}],&quot;examDate&quot;:153,&quot;msgId&quot;:&quot;APP018&quot;,&quot;userId&quot;:&quot;121788&quot;}
+报名：{&quot;activityId&quot;:&quot;1554115158740313&quot;,&quot;msgId&quot;:&quot;APP018&quot;,&quot;userId&quot;:&quot;121788&quot;,&quot;userInfoList&quot;:[{&quot;报名字段4&quot;:&quot;33333333&quot;}]}
+问卷：{&quot;activityId&quot;:&quot;1554099874626159&quot;,&quot;answerList&quot;:[{&quot;optionId&quot;:&quot;1554099958290127&quot;,&quot;topicId&quot;:&quot;1554099958282457&quot;,&quot;topicType&quot;:1}],&quot;msgId&quot;:&quot;APP018&quot;,&quot;userId&quot;:&quot;121788&quot;}
+投票：{&quot;activityId&quot;:&quot;1554105427997173&quot;,&quot;answerList&quot;:[{&quot;optionId&quot;:&quot;155410545209440&quot;,&quot;topicId&quot;:&quot;1554105452081208&quot;,&quot;topicType&quot;:2}],&quot;msgId&quot;:&quot;APP018&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+主要入参说明：
+activityId：活动id
+userId：用户id
+optionId：选项id
+topicId：题目id
+userId:用户id
+examDate：考试时间
+userInfoList：报名信息（报名活动）
+topicType：题目类型（1图片、2文字）（问卷、投票活动）
+
+输出：
+{
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功。&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>4.退出活动 <code>APP019</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554115158740313&quot;,&quot;msgId&quot;:&quot;APP019&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功。&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>5.查找活动参与的人的列表 <code>APP042</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554115158740313&quot;,&quot;index&quot;:&quot;0&quot;,&quot;msgId&quot;:&quot;APP042&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;count&quot;:1,
+    &quot;currentDate&quot;:&quot;2019-04-01 18:46:01&quot;,
+    &quot;objList&quot;:[
+        {
+            &quot;mobile&quot;:&quot;19900000005&quot;,
+            &quot;name&quot;:&quot;张0005&quot;,
+            &quot;createdate&quot;:&quot;2019-04-01 18:45:14&quot;,
+            &quot;id&quot;:&quot;121788&quot;,
+            &quot;txpic&quot;:&quot;&quot;
+        }
+    ]
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>6.查看户外活动参与详情 <code>APP043</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554115158740313&quot;,&quot;msgId&quot;:&quot;APP043&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;userinfolist&quot;:&quot;[{&quot;报名字段4&quot;:&quot;434343&quot;}]&quot;,
+    &quot;currentDate&quot;:&quot;2019-04-01 19:00:21&quot;
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>7.参加户外活动修改 <code>APP044</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554115158740313&quot;,&quot;msgId&quot;:&quot;APP044&quot;,&quot;userId&quot;:&quot;121788&quot;,&quot;userInfoList&quot;:[{&quot;报名字段4&quot;:&quot;33333333&quot;}]}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;count&quot;:0,
+    &quot;isNick&quot;:false
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>8.最近一次考试结果 <code>APP045</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554083500877412&quot;,&quot;department&quot;:&quot;02000000_160727104806832&quot;,&quot;msgId&quot;:&quot;APP045&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;score&quot;: 1,
+    &quot;examDate&quot;: &quot;2019-04-01 10:37:00&quot;,
+    &quot;currentDate&quot;: &quot;2019-04-01 10:41:15&quot;,
+    &quot;topiclist&quot;: [
+        {
+            &quot;anserParse&quot;: &quot;&quot;,
+            &quot;answer&quot;: [
+                &quot;1554083523375983&quot;
+            ],
+            &quot;id&quot;: &quot;1554083523364349&quot;,
+            &quot;options&quot;: [
+                {
+                    &quot;content&quot;: &quot;c&quot;,
+                    &quot;id&quot;: &quot;1554083523375270&quot;,
+                    &quot;isanswer&quot;: 0
+                },
+                {
+                    &quot;content&quot;: &quot;b&quot;,
+                    &quot;id&quot;: &quot;1554083523375761&quot;,
+                    &quot;isanswer&quot;: 0
+                },
+                {
+                    &quot;content&quot;: &quot;a&quot;,
+                    &quot;id&quot;: &quot;1554083523375983&quot;,
+                    &quot;isanswer&quot;: 1
+                },
+                {
+                    &quot;content&quot;: &quot;d&quot;,
+                    &quot;id&quot;: &quot;1554083523375987&quot;,
+                    &quot;isanswer&quot;: 0
+                }
+            ],
+            &quot;score&quot;: 1,
+            &quot;showanswer&quot;: &quot;&quot;,
+            &quot;showuseranswer&quot;: &quot;&quot;,
+            &quot;title&quot;: &quot;test&quot;,
+            &quot;topicScore&quot;: 1,
+            &quot;type&quot;: 1,
+            &quot;useranswer&quot;: [
+                &quot;1554083523375983&quot;
+            ]
+        }
+    ],
+    &quot;activityInfo&quot;: {
+        &quot;examdatabaseid&quot;: &quot;&quot;,
+        &quot;isviewanswer&quot;: &quot;false&quot;,
+        &quot;mscore&quot;: &quot;1&quot;,
+        &quot;isradomexam&quot;: &quot;false&quot;,
+        &quot;name&quot;: &quot;考试活动41&quot;,
+        &quot;endtime&quot;: &quot;2019-04-03 09:51:16&quot;,
+        &quot;id&quot;: &quot;1554083500877412&quot;,
+        &quot;content&quot;: &quot;&lt;p&gt;fdafdas&lt;/p&gt;&quot;,
+        &quot;selectcount&quot;: &quot;12&quot;,
+        &quot;sscore&quot;: &quot;1&quot;
+    },
+    &quot;isEnd&quot;: 0,
+    &quot;seq&quot;: 2
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>9.考试统计结果 <code>APP046</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554083500877412&quot;,&quot;department&quot;:&quot;02000000_160727104806832&quot;,&quot;msgId&quot;:&quot;APP046&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;statistics&quot;: [
+        {
+            &quot;departmentId&quot;: &quot;02A69100&quot;,
+            &quot;department&quot;: &quot;销售部&quot;,
+            &quot;avgScore&quot;: 0,
+            &quot;joinPecent&quot;: 0,
+            &quot;joinNum&quot;: 0
+        },
+        ...
+        {
+            &quot;departmentId&quot;: &quot;02A62000&quot;,
+            &quot;department&quot;: &quot;财务支撑部&quot;,
+            &quot;avgScore&quot;: 0,
+            &quot;joinPecent&quot;: 0,
+            &quot;joinNum&quot;: 0
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>10.问卷统计结果 <code>APP047</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554099874626159&quot;,&quot;department&quot;:&quot;02000000_160727104806832&quot;,&quot;msgId&quot;:&quot;APP047&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;statistics&quot;: [
+        {
+            &quot;departmentId&quot;: &quot;02AC0000&quot;,
+            &quot;department&quot;: &quot;武汉烽火信息集成技术有限公司&quot;,
+            &quot;avgScore&quot;: 0,
+            &quot;joinPecent&quot;: 0,
+            &quot;totalNum&quot;: 3,
+            &quot;joinNum&quot;: 0,
+            &quot;userScore&quot;: {}
+        },
+        ...                    
+        {
+            &quot;departmentId&quot;: &quot;fhkjjt_whtbkjyxg_160811205750648&quot;,
+            &quot;department&quot;: &quot;同博科技有限公司&quot;,
+            &quot;avgScore&quot;: 0,
+            &quot;joinPecent&quot;: 0,
+            &quot;totalNum&quot;: 20,
+            &quot;joinNum&quot;: 0,
+            &quot;userScore&quot;: {}
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>11.考试统计结果(参与率) <code>APP055</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554083500877412&quot;,&quot;department&quot;:&quot;02000000_160727104806832&quot;,&quot;msgId&quot;:&quot;APP055&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;statistics&quot;: [
+        {
+            &quot;departmentId&quot;: &quot;02A69100&quot;,
+            &quot;department&quot;: &quot;销售部&quot;,
+            &quot;avgScore&quot;: 0,
+            &quot;joinPecent&quot;: 0,
+            &quot;totalNum&quot;: 0,
+            &quot;joinNum&quot;: 0
+        },
+        ...
+         {
+            &quot;departmentId&quot;: &quot;02A62000&quot;,
+            &quot;department&quot;: &quot;财务支撑部&quot;,
+            &quot;avgScore&quot;: 0,
+            &quot;joinPecent&quot;: 0,
+            &quot;totalNum&quot;: 0,
+            &quot;joinNum&quot;: 0
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>12.查询用户考试排名 <code>APP058</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554083500877412&quot;,&quot;msgId&quot;:&quot;APP058&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;userRankInfo&quot;: {
+        &quot;rank&quot;: 1,
+        &quot;score&quot;: 1
+    }
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>13.查询考试靠前排名成绩 <code>APP059</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554083500877412&quot;,&quot;msgId&quot;:&quot;APP059&quot;,&quot;topNum&quot;:&quot;10&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;count&quot;: 1,
+    &quot;userRankInfos&quot;: [
+        {
+            &quot;score&quot;: &quot;1&quot;,
+            &quot;name&quot;: &quot;张0005&quot;,
+            &quot;txpic&quot;: &quot;null&quot;,
+            &quot;userid&quot;: &quot;121788&quot;
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>14.查看投票结果 <code>APP030</code></p>
+<pre><code>url：/app/service.do?text={&quot;activityId&quot;:&quot;1554105427997173&quot;,&quot;index&quot;:&quot;0&quot;,&quot;mobile&quot;:&quot;19900000005&quot;,&quot;msgId&quot;:&quot;APP030&quot;,&quot;userId&quot;:&quot;121788&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;count&quot;: 4,
+    &quot;optionList&quot;: [
+        {
+            &quot;nick&quot;: &quot;null&quot;,
+            &quot;isselect&quot;: &quot;true&quot;,
+            &quot;id&quot;: &quot;155410545209440&quot;,
+            &quot;content&quot;: &quot;a&quot;,
+            &quot;selectcount&quot;: &quot;1&quot;,
+            &quot;url&quot;: &quot;null&quot;
+        },
+        {
+            &quot;nick&quot;: &quot;null&quot;,
+            &quot;isselect&quot;: &quot;false&quot;,
+            &quot;id&quot;: &quot;1554105452094790&quot;,
+            &quot;content&quot;: &quot;d&quot;,
+            &quot;selectcount&quot;: &quot;0&quot;,
+            &quot;url&quot;: &quot;null&quot;
+        },
+        {
+            &quot;nick&quot;: &quot;null&quot;,
+            &quot;isselect&quot;: &quot;false&quot;,
+            &quot;id&quot;: &quot;1554105452094626&quot;,
+            &quot;content&quot;: &quot;c&quot;,
+            &quot;selectcount&quot;: &quot;0&quot;,
+            &quot;url&quot;: &quot;null&quot;
+        },
+        {
+            &quot;nick&quot;: &quot;null&quot;,
+            &quot;isselect&quot;: &quot;false&quot;,
+            &quot;id&quot;: &quot;1554105452094858&quot;,
+            &quot;content&quot;: &quot;b&quot;,
+            &quot;selectcount&quot;: &quot;0&quot;,
+            &quot;url&quot;: &quot;null&quot;
+        }
+    ],
+    &quot;voteCount&quot;: 1
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>1.获取商品列表信息 <code>GET_GOODS_LIST</code> </p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;GET_GOODS_LIST&quot;,&quot;activityId&quot;:&quot;155416848857630&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;obj&quot;:[
+        {
+            &quot;imgurl&quot;:&quot;goods/20190301105549582660.jpg&quot;,
+            &quot;unit&quot;:&quot;null&quot;,
+            &quot;countlimit&quot;:&quot;null&quot;,
+            &quot;price&quot;:&quot;-700&quot;,
+            &quot;name&quot;:&quot;测试账号菜品&quot;,
+            &quot;numlimit&quot;:&quot;-1&quot;,
+            &quot;id&quot;:&quot;1551408966461336&quot;,
+            &quot;stock&quot;:&quot;-1000&quot;
+        },
+        {
+            &quot;imgurl&quot;:&quot;goods/20190219023645985929.jpg&quot;,
+            &quot;unit&quot;:&quot;null&quot;,
+            &quot;countlimit&quot;:&quot;null&quot;,
+            &quot;price&quot;:&quot;18&quot;,
+            &quot;name&quot;:&quot;地三鲜&quot;,
+            &quot;numlimit&quot;:&quot;-1&quot;,
+            &quot;id&quot;:&quot;1550558221011378&quot;,
+            &quot;stock&quot;:&quot;18&quot;
+        }
+    ]
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>2.获取商品详细信息 <code>GET_GOODS_DETAIL</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;GET_GOODS_DETAIL&quot;,&quot;goodsId&quot;:&quot;91&quot;}
+
+主要入参说明：
+goodsId：商品id
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;goods&quot;: {
+        &quot;tenant_id&quot;: &quot;02000000&quot;,
+        &quot;create_user_id&quot;: &quot;null&quot;,
+        &quot;bad&quot;: &quot;1&quot;,
+        &quot;numlimit&quot;: &quot;-1&quot;,
+        &quot;last_update_user_id&quot;: &quot;null&quot;,
+        &quot;type&quot;: &quot;1&quot;,
+        &quot;good&quot;: &quot;1&quot;,
+        &quot;revision&quot;: &quot;0&quot;,
+        &quot;app_name&quot;: &quot;null&quot;,
+        &quot;imgurl&quot;: &quot;goods/91/20181212022803227745.png&quot;,
+        &quot;unit&quot;: &quot;null&quot;,
+        &quot;videourl&quot;: &quot;null&quot;,
+        &quot;price&quot;: &quot;60.0&quot;,
+        &quot;activity_id&quot;: &quot;null&quot;,
+        &quot;name&quot;: &quot;羊肉锅仔12：15取餐&quot;,
+        &quot;detail&quot;: &quot;羊肉剁块大火热油，放入葱姜蒜籽等呛锅，然后放入剁好的羊肉爆炒，小火焖2小时后，将准备放入火锅胡萝卜加入烧好或者炖好的羊肉和汤，最后在羊肉的上面铺上切成段的青蒜和香菜就完成啦&quot;,
+        &quot;id&quot;: &quot;91&quot;,
+        &quot;create_date&quot;: &quot;2018-12-12 14:28:03.0&quot;,
+        &quot;stock&quot;: &quot;5&quot;,
+        &quot;app_scope&quot;: &quot;null&quot;,
+        &quot;last_update_date&quot;: &quot;null&quot;,
+        &quot;status&quot;: &quot;1&quot;
+    },
+    &quot;comment&quot;: [
+        {
+            &quot;tx_pic&quot;: &quot;user/neutral.png&quot;,
+            &quot;isgood&quot;: &quot;true&quot;,
+            &quot;content&quot;: &quot;沟沟壑壑&quot;
+        },
+        {
+            &quot;tx_pic&quot;: &quot;user/neutral.png&quot;,
+            &quot;isgood&quot;: &quot;false&quot;,
+            &quot;content&quot;: &quot;Hjkbvf&quot;
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>3.创建订单 <code>CREATE_ORDER</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;CREATE_ORDER&quot;,&quot;userId&quot;:&quot;11098&quot;,&quot;name&quot;:&quot;张家齐&quot;,&quot;mobile&quot;:&quot;18942923451&quot;,&quot;address&quot;:&quot;fdafa&quot;,&quot;mealTime&quot;:&quot;2019-04-02 09:46:26 ~ 2019-04-02 09:56:24&quot;,&quot;totalPrice&quot;:18,&quot;orderDetail&quot;:[{&quot;id&quot;:&quot;1550558221011378&quot;,&quot;goodsId&quot;:&quot;1550558221011378&quot;,&quot;name&quot;:&quot;地三鲜&quot;,&quot;amount&quot;:1,&quot;stock&quot;:&quot;18&quot;,&quot;countlimit&quot;:&quot;null&quot;,&quot;numlimit&quot;:&quot;-1&quot;,&quot;price&quot;:&quot;18&quot;}],&quot;activityId&quot;:&quot;155416848857630&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;orderId&quot;:&quot;155416900251946&quot;
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>4.获取订单列表 <code>GET_ORDER_LIST</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;GET_ORDER_LIST&quot;,&quot;userId&quot;:&quot;11098&quot;,&quot;activityId&quot;:&quot;155416848857630&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;resultMap&quot;:{
+    &quot;hasOrder&quot;:true,
+    &quot;obj&quot;:[
+        {
+            &quot;activityid&quot;:&quot;155416848857630&quot;,
+            &quot;imgurl&quot;:&quot;goods/20190219023645985929.jpg&quot;,
+            &quot;prizecount&quot;:&quot;0&quot;,
+            &quot;islottery&quot;:&quot;false&quot;,
+            &quot;totalprice&quot;:&quot;18.0&quot;,
+            &quot;createdate&quot;:1554169002000,
+            &quot;endtime&quot;:1554169584000,
+            &quot;id&quot;:&quot;155416900251946&quot;,
+            &quot;iscomment&quot;:&quot;false&quot;,
+            &quot;state&quot;:&quot;2&quot;
+        },
+        {
+            &quot;activityid&quot;:&quot;1553755843395665&quot;,
+            &quot;imgurl&quot;:&quot;goods/91/20181212022803227745.png&quot;,
+            &quot;prizecount&quot;:&quot;0&quot;,
+            &quot;islottery&quot;:&quot;false&quot;,
+            &quot;totalprice&quot;:&quot;60.0&quot;,
+            &quot;createdate&quot;:1553755937000,
+            &quot;endtime&quot;:1553756006000,
+            &quot;id&quot;:&quot;155375593753731&quot;,
+            &quot;iscomment&quot;:&quot;false&quot;,
+            &quot;state&quot;:&quot;5&quot;
+        },
+        {
+            &quot;activityid&quot;:&quot;1553751512198763&quot;,
+            &quot;imgurl&quot;:&quot;goods/20190219023645985929.jpg&quot;,
+            &quot;prizecount&quot;:&quot;0&quot;,
+            &quot;islottery&quot;:&quot;false&quot;,
+            &quot;totalprice&quot;:&quot;18.0&quot;,
+            &quot;createdate&quot;:1553751558000,
+            &quot;endtime&quot;:1553751673000,
+            &quot;id&quot;:&quot;1553751558173115&quot;,
+            &quot;iscomment&quot;:&quot;false&quot;,
+            &quot;state&quot;:&quot;5&quot;
+        },
+        {
+            &quot;activityid&quot;:&quot;1553511930839637&quot;,
+            &quot;imgurl&quot;:&quot;goods/91/20181212022803227745.png&quot;,
+            &quot;prizecount&quot;:&quot;0&quot;,
+            &quot;islottery&quot;:&quot;false&quot;,
+            &quot;totalprice&quot;:&quot;118.0&quot;,
+            &quot;createdate&quot;:1553512810000,
+            &quot;endtime&quot;:1553513083000,
+            &quot;id&quot;:&quot;1553512810036851&quot;,
+            &quot;iscomment&quot;:&quot;false&quot;,
+            &quot;state&quot;:&quot;5&quot;
+        }
+    ],
+    &quot;systemDate&quot;:&quot;Apr 2, 2019 9:41:24 AM&quot;,
+    &quot;pickStartDate&quot;:&quot;Apr 2, 2019 9:46:26 AM&quot;,
+    &quot;isEnd&quot;:false,
+    &quot;pickEndDate&quot;:&quot;Apr 2, 2019 9:56:24 AM&quot;,
+    &quot;hasOrderNotGet&quot;:false
+},
+&quot;code&quot;:&quot;0&quot;,
+&quot;message&quot;:&quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>5.获取订单详情 <code>GET_ORDER_DETAIL</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;GET_ORDER_DETAIL&quot;,&quot;activityId&quot;:&quot;155416848857630&quot;,&quot;id&quot;:&quot;155416900251946&quot;}
+
+主要入参说明：
+activityId：活动id
+id：订单id
+
+输出：
+{&quot;resultMap&quot;:{&quot;activity&quot;:{&quot;depoint&quot;:&quot;0&quot;,&quot;groupview&quot;:&quot;null&quot;,&quot;partyview&quot;:&quot;&quot;,&quot;score&quot;:&quot;0&quot;,&quot;examtime&quot;:&quot;null&quot;,&quot;detreasure&quot;:&quot;0&quot;,&quot;maxother&quot;:&quot;0&quot;,&quot;pick_remind_date&quot;:&quot;2019-04-02 09:47:36.0&quot;,&quot;typeid&quot;:&quot;7&quot;,&quot;id&quot;:&quot;155416848857630&quot;,&quot;canrelease&quot;:&quot;true&quot;,&quot;create_user_id&quot;:&quot;1045&quot;,&quot;merchant&quot;:&quot;[49887]&quot;,&quot;pushdate&quot;:&quot;2019-04-02 09:28:51.0&quot;,&quot;iscomment&quot;:&quot;true&quot;,&quot;organizationid&quot;:&quot;-1&quot;,&quot;lotterypercount&quot;:&quot;null&quot;,&quot;isinnershare&quot;:&quot;false&quot;,&quot;isnick&quot;:&quot;false&quot;,&quot;ordertype&quot;:&quot;1&quot;,&quot;sscore&quot;:&quot;null&quot;,&quot;status&quot;:&quot;1&quot;,&quot;tenant_id&quot;:&quot;02000000&quot;,&quot;groupto&quot;:&quot;null&quot;,&quot;task_id&quot;:&quot;null&quot;,&quot;multinum&quot;:&quot;null&quot;,&quot;digest&quot;:&quot;null&quot;,&quot;last_update_date&quot;:&quot;2019-04-02 09:28:14.0&quot;,&quot;address&quot;:&quot;fdafa&quot;,&quot;isviewanswer&quot;:&quot;false&quot;,&quot;endtime&quot;:&quot;2019-04-02 09:46:24.0&quot;,&quot;selectmincount&quot;:&quot;1&quot;,&quot;activityimage&quot;:&quot;null&quot;,&quot;order_end_date&quot;:&quot;null&quot;,&quot;app_name&quot;:&quot;null&quot;,&quot;examdatabaseid&quot;:&quot;null&quot;,&quot;isradomexam&quot;:&quot;false&quot;,&quot;menuid&quot;:&quot;null&quot;,&quot;pick_end_date&quot;:&quot;2019-04-02 09:56:24.0&quot;,&quot;actmincredits&quot;:&quot;0&quot;,&quot;app_scope&quot;:&quot;smart2&quot;,&quot;punishpoint&quot;:&quot;6&quot;,&quot;isoptionorder&quot;:&quot;null&quot;,&quot;islottery&quot;:&quot;false&quot;,&quot;istimepush&quot;:&quot;false&quot;,&quot;order_start_date&quot;:&quot;null&quot;,&quot;applybegin&quot;:&quot;null&quot;,&quot;participant&quot;:&quot;1&quot;,&quot;updatedate&quot;:&quot;null&quot;,&quot;istopicorder&quot;:&quot;null&quot;,&quot;isshowpeople&quot;:&quot;true&quot;,&quot;questionnum&quot;:&quot;null&quot;,&quot;create_date&quot;:&quot;2019-04-02 09:28:09.0&quot;,&quot;depview&quot;:&quot;&quot;,&quot;selectcount&quot;:&quot;1&quot;,&quot;familycount&quot;:&quot;null&quot;,&quot;daycount&quot;:&quot;0&quot;,&quot;imagecount&quot;:&quot;1&quot;,&quot;last_update_user_id&quot;:&quot;1045&quot;,&quot;ordertime&quot;:&quot;null&quot;,&quot;isalowfamily&quot;:&quot;true&quot;,&quot;linkman&quot;:&quot;null&quot;,&quot;orgid&quot;:&quot;null&quot;,&quot;revision&quot;:&quot;1&quot;,&quot;commentcount&quot;:&quot;0&quot;,&quot;departmentname&quot;:&quot;null&quot;,&quot;adminid&quot;:&quot;1045&quot;,&quot;name&quot;:&quot;订购活动421&quot;,&quot;fields&quot;:&quot;null&quot;,&quot;pick_start_date&quot;:&quot;2019-04-02 09:46:26.0&quot;,&quot;party&quot;:&quot;&quot;,&quot;actmintreasure&quot;:&quot;0&quot;,&quot;pickuptime&quot;:&quot;2019-04-02 09:46:26 ~ 2019-04-02 09:56:24&quot;,&quot;urltype&quot;:&quot;0&quot;,&quot;isshare&quot;:&quot;true&quot;,&quot;mscore&quot;:&quot;null&quot;,&quot;isregular&quot;:&quot;false&quot;,&quot;content&quot;:&quot;\u003cp\u003edfasfdas\u003c/p\u003e&quot;,&quot;isreward&quot;:&quot;false&quot;,&quot;point&quot;:&quot;3&quot;,&quot;singlenum&quot;:&quot;null&quot;,&quot;titleimage&quot;:&quot;activity/20190402092651974599.jpg&quot;,&quot;treasure&quot;:&quot;0&quot;,&quot;department&quot;:&quot;&quot;,&quot;topictype&quot;:&quot;0&quot;,&quot;categoryid&quot;:&quot;25&quot;,&quot;upperlimit&quot;:&quot;null&quot;,&quot;votecount&quot;:&quot;0&quot;,&quot;mobile&quot;:&quot;null&quot;,&quot;groups&quot;:&quot;null&quot;,&quot;begintime&quot;:&quot;2019-04-02 09:26:24.0&quot;,&quot;ispush&quot;:&quot;false&quot;,&quot;reviewcount&quot;:&quot;2&quot;,&quot;countlimit&quot;:&quot;null&quot;,&quot;companytype&quot;:&quot;null&quot;,&quot;ishomepage&quot;:&quot;true&quot;,&quot;applyend&quot;:&quot;2019-04-02 09:46:24&quot;,&quot;attention&quot;:&quot;null&quot;,&quot;cancel_deadline&quot;:&quot;null&quot;,&quot;ispayfee&quot;:&quot;false&quot;},&quot;orderDetail&quot;:[{&quot;amount&quot;:&quot;1&quot;,&quot;orderid&quot;:&quot;155416900251946&quot;,&quot;goodsid&quot;:&quot;1550558221011378&quot;,&quot;price&quot;:&quot;18.0&quot;,&quot;name&quot;:&quot;地三鲜&quot;,&quot;id&quot;:&quot;cbc0310114bd44ca9d19d635ff8dd5ca&quot;}],&quot;comment&quot;:[],&quot;order&quot;:{&quot;tenant_id&quot;:&quot;02000000&quot;,&quot;address&quot;:&quot;fdafa&quot;,&quot;totalprice&quot;:&quot;18.0&quot;,&quot;finishdate&quot;:1554170184000,&quot;mobile&quot;:&quot;18942923451&quot;,&quot;iscomment&quot;:&quot;false&quot;,&quot;userid&quot;:&quot;11098&quot;,&quot;acceptdate&quot;:1554169002000,&quot;mealtime&quot;:&quot;2019-04-02 09:46:26 ~ 2019-04-02 09:56:24&quot;,&quot;senddate&quot;:1554169586000,&quot;activity_id&quot;:&quot;155416848857630&quot;,&quot;name&quot;:&quot;张家齐&quot;,&quot;id&quot;:&quot;155416900251946&quot;,&quot;state&quot;:&quot;2&quot;,&quot;create_date&quot;:1554169002000,&quot;realprice&quot;:&quot;0.0&quot;,&quot;ordertype&quot;:&quot;0&quot;}},&quot;code&quot;:&quot;0&quot;,&quot;message&quot;:&quot;成功&quot;}
+
+主要出参说明：
+</code></pre>
+
+<p>6.获取订单状态 <code>GET_ORDER_STATE</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;GET_ORDER_STATE&quot;,&quot;id&quot;:&quot;155416900251946&quot;}
+
+主要入参说明：
+id：订单id
+
+输出：
+{&quot;resultMap&quot;:{&quot;state&quot;:3},&quot;code&quot;:&quot;0&quot;,&quot;message&quot;:&quot;成功&quot;}
+
+主要出参说明：
+</code></pre>
+
+<p>7.取消订单 <code>CANCLE_ORDER</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;CANCLE_ORDER&quot;,&quot;id&quot;:&quot;1554171637842593&quot;,&quot;userId&quot;:&quot;11098&quot;,&quot;activityId&quot;:&quot;1554171583553889&quot;}
+
+主要入参说明：
+
+输出：
+{&quot;code&quot;:&quot;0&quot;,&quot;message&quot;:&quot;成功。&quot;}
+
+主要出参说明：
+</code></pre>
+
+<p>8.订单完成 <code>FINISH_ORDER</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;FINISH_ORDER&quot;,&quot;id&quot;:&quot;91&quot;}
+
+主要入参说明：
+
+输出：
+{
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功。&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>9.商品评价 <code>GOODS_COMMENT</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;GOODS_COMMENT&quot;,&quot;userId&quot;:&quot;11098&quot;,&quot;orderId&quot;:&quot;155416900251946&quot;,&quot;commentDetail&quot;:[{&quot;goodsId&quot;:&quot;1550558221011378&quot;,&quot;isGood&quot;:true,&quot;content&quot;:&quot;写&quot;}]}
+
+主要入参说明：
+
+输出：
+{&quot;code&quot;:&quot;0&quot;,&quot;message&quot;:&quot;成功。&quot;}
+
+主要出参说明：
+</code></pre>
+
+<p>10.获取下单权限 <code>GET_ORDER_RIGHTS</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;GET_ORDER_RIGHTS&quot;,&quot;userId&quot;:&quot;11098&quot;}
+
+主要入参说明：
+
+输出：
+{&quot;resultMap&quot;:{&quot;flag&quot;:true},&quot;code&quot;:&quot;0&quot;,&quot;message&quot;:&quot;成功&quot;}
+
+主要出参说明：
+</code></pre>
+
+<p>11.获取订单商品信息 <code>GET_ORDER_GOODS</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;GET_ORDER_GOODS&quot;,&quot;id&quot;:&quot;155416900251946&quot;}
+
+主要入参说明：
+
+输出：
+{&quot;resultMap&quot;:{&quot;obj&quot;:[{&quot;imgurl&quot;:&quot;goods/20190219023645985929.jpg&quot;,&quot;name&quot;:&quot;地三鲜&quot;,&quot;id&quot;:&quot;1550558221011378&quot;}]},&quot;code&quot;:&quot;0&quot;,&quot;message&quot;:&quot;成功&quot;}
+
+主要出参说明：
+</code></pre>
+
+<p>12.商家确认订单已完成 <code>CONFIRM_ORDER</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;CONFIRM_ORDER&quot;,&quot;userId&quot;:&quot;49887&quot;,&quot;activityId&quot;:&quot;155416848857630&quot;,&quot;id&quot;:&quot;155416900251946&quot;}
+
+主要入参说明：
+
+输出：
+{&quot;code&quot;:&quot;0&quot;,&quot;message&quot;:&quot;成功。&quot;}
+
+主要出参说明：
+</code></pre>
+
+<p>13.获取商家确认订单页面信息 <code>CONFIRM_ORDER_INFO</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;CONFIRM_ORDER_INFO&quot;,&quot;id&quot;:&quot;91&quot;,&quot;activityId&quot;:&quot;155416848857630&quot;}
+
+主要入参说明：
+activityId：活动id
+id：订单id
+
+输出：
+{
+&quot;resultMap&quot;: {
+    &quot;obj&quot;: {
+        &quot;activityid&quot;: &quot;135&quot;,
+        &quot;address&quot;: &quot;关东南食堂副食窗口&quot;,
+        &quot;totalprice&quot;: &quot;1.0&quot;,
+        &quot;mobile&quot;: &quot;18627114792&quot;,
+        &quot;name&quot;: &quot;熊露&quot;,
+        &quot;id&quot;: &quot;91&quot;,
+        &quot;state&quot;: &quot;5&quot;
+    },
+    &quot;typeId&quot;: &quot;7&quot;,
+    &quot;orderDetail&quot;: [
+        {
+            &quot;amount&quot;: &quot;1&quot;,
+            &quot;orderid&quot;: &quot;91&quot;,
+            &quot;goodsid&quot;: &quot;5&quot;,
+            &quot;price&quot;: &quot;1.0&quot;,
+            &quot;name&quot;: &quot;芝麻酱&quot;,
+            &quot;id&quot;: &quot;167&quot;
+        }
+    ]
+},
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: &quot;成功&quot;
+}
+
+主要出参说明：
+</code></pre>
+
+<p>14.获取上次下单地址 <code>GET_LAST_ADRESS</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;GET_LAST_ADRESS&quot;,&quot;activityId&quot;:&quot;155416848857630&quot;,&quot;userId&quot;:&quot;11098&quot;}
+
+主要入参说明：
+
+输出：
+{&quot;resultMap&quot;:{&quot;obj&quot;:{&quot;address&quot;:&quot;fdsfa&quot;,&quot;goodsaddress&quot;:&quot;fdafa&quot;}},&quot;code&quot;:&quot;0&quot;,&quot;message&quot;:&quot;成功&quot;}
+
+主要出参说明：
+</code></pre>
+
+<p>15.获取下单截止时间 <code>GET_GOODS_TIME</code></p>
+<pre><code>url：/app/order/service.do?text={&quot;msgId&quot;:&quot;GET_GOODS_TIME&quot;,&quot;activityId&quot;:&quot;155416848857630&quot;}
+
+主要入参说明：
+
+输出：
+{&quot;resultMap&quot;:{&quot;activity&quot;:{&quot;islottery&quot;:&quot;false&quot;,&quot;depoint&quot;:&quot;0&quot;,&quot;istimepush&quot;:&quot;false&quot;,&quot;participant&quot;:&quot;1&quot;,&quot;partyview&quot;:&quot;&quot;,&quot;score&quot;:&quot;0&quot;,&quot;detreasure&quot;:&quot;0&quot;,&quot;isshowpeople&quot;:&quot;true&quot;,&quot;maxother&quot;:&quot;0&quot;,&quot;pick_remind_date&quot;:1554169656000,&quot;typeid&quot;:&quot;7&quot;,&quot;id&quot;:&quot;155416848857630&quot;,&quot;create_date&quot;:1554168489000,&quot;depview&quot;:&quot;&quot;,&quot;selectcount&quot;:&quot;1&quot;,&quot;canrelease&quot;:&quot;true&quot;,&quot;daycount&quot;:&quot;0&quot;,&quot;create_user_id&quot;:&quot;1045&quot;,&quot;imagecount&quot;:&quot;1&quot;,&quot;merchant&quot;:&quot;[49887]&quot;,&quot;pushdate&quot;:1554168531000,&quot;iscomment&quot;:&quot;true&quot;,&quot;last_update_user_id&quot;:&quot;1045&quot;,&quot;isalowfamily&quot;:&quot;true&quot;,&quot;revision&quot;:&quot;1&quot;,&quot;organizationid&quot;:&quot;-1&quot;,&quot;commentcount&quot;:&quot;0&quot;,&quot;isinnershare&quot;:&quot;false&quot;,&quot;adminid&quot;:&quot;1045&quot;,&quot;name&quot;:&quot;订购活动421&quot;,&quot;isnick&quot;:&quot;false&quot;,&quot;pick_start_date&quot;:1554169586000,&quot;party&quot;:&quot;&quot;,&quot;actmintreasure&quot;:&quot;0&quot;,&quot;ordertype&quot;:&quot;1&quot;,&quot;status&quot;:&quot;1&quot;,&quot;tenant_id&quot;:&quot;02000000&quot;,&quot;urltype&quot;:&quot;0&quot;,&quot;isshare&quot;:&quot;true&quot;,&quot;isregular&quot;:&quot;false&quot;,&quot;content&quot;:&quot;\u003cp\u003edfasfdas\u003c/p\u003e&quot;,&quot;isreward&quot;:&quot;false&quot;,&quot;point&quot;:&quot;3&quot;,&quot;titleimage&quot;:&quot;activity/20190402092651974599.jpg&quot;,&quot;treasure&quot;:&quot;0&quot;,&quot;department&quot;:&quot;&quot;,&quot;topictype&quot;:&quot;0&quot;,&quot;categoryid&quot;:&quot;25&quot;,&quot;last_update_date&quot;:1554168494000,&quot;address&quot;:&quot;fdafa&quot;,&quot;votecount&quot;:&quot;0&quot;,&quot;isviewanswer&quot;:&quot;false&quot;,&quot;endtime&quot;:1554169584000,&quot;begintime&quot;:1554168384000,&quot;selectmincount&quot;:&quot;1&quot;,&quot;ispush&quot;:&quot;false&quot;,&quot;reviewcount&quot;:&quot;2&quot;,&quot;mealtime&quot;:&quot;2019-04-02 09:26:24 ~ 2019-04-02 09:46:24&quot;,&quot;ishomepage&quot;:&quot;true&quot;,&quot;isradomexam&quot;:&quot;false&quot;,&quot;applyend&quot;:1554169584000,&quot;pick_end_date&quot;:1554170184000,&quot;actmincredits&quot;:&quot;0&quot;,&quot;app_scope&quot;:&quot;smart2&quot;,&quot;ispayfee&quot;:&quot;false&quot;,&quot;punishpoint&quot;:&quot;6&quot;}},&quot;code&quot;:&quot;0&quot;,&quot;message&quot;:&quot;成功&quot;}
+
+主要出参说明：
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
